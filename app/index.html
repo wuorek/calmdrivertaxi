@@ -1087,8 +1087,7 @@
 
     /* ─── SCROLL REVEAL ─── */
     .reveal {
-      opacity: 0;
-      transform: translateY(40px);
+      opacity: 1;
     }
 
     /* ─── RESPONSIVE ─── */
@@ -2033,23 +2032,28 @@
   ════════════════════════════════ */
   function initAnimations() {
     // Hero entrance
-    gsap.from('.hero-content > *', {
-      y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
-    });
-    gsap.from('.hero-visual', {
-      x: 100, opacity: 0, duration: 1.2, delay: 0.3, ease: 'power3.out'
-    });
+    gsap.fromTo('.hero-content > *',
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }
+    );
+    gsap.fromTo('.hero-visual',
+      { x: 100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.2, delay: 0.3, ease: 'power3.out' }
+    );
 
-    // Scroll reveals
+    // Scroll reveals — single system, no duplicates
     gsap.utils.toArray('.reveal').forEach(el => {
-      gsap.to(el, {
-        y: 0, opacity: 1, duration: 0.7, ease: 'power2.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none'
+      gsap.fromTo(el,
+        { y: 40, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.7, ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            once: true
+          }
         }
-      });
+      );
     });
 
     // Counter triggers
@@ -2060,30 +2064,6 @@
         onEnter: () => animateCounter(el),
         once: true
       });
-    });
-
-    // Platform badges stagger
-    gsap.from('.platform-badge', {
-      y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'back.out(1.7)',
-      scrollTrigger: { trigger: '.platforms-inner', start: 'top 85%' }
-    });
-
-    // Why cards
-    gsap.from('.why-card', {
-      y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out',
-      scrollTrigger: { trigger: '.why-grid', start: 'top 80%' }
-    });
-
-    // Steps
-    gsap.from('.step', {
-      y: 40, opacity: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out',
-      scrollTrigger: { trigger: '.steps-wrap', start: 'top 80%' }
-    });
-
-    // Rental cards
-    gsap.from('.rental-card', {
-      scale: 0.95, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'back.out(1.2)',
-      scrollTrigger: { trigger: '.rental-grid', start: 'top 80%' }
     });
   }
 
