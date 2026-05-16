@@ -1,0 +1,70 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout ─────────────────────────────────────────────────────
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ── 2. Set up SSH ────────────────────────────────────────────────────
+      - name: Configure SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add server to known hosts
+        run: |
+          ssh-keyscan -H 57.128.201.196 >> ~/.ssh/known_hosts
+
+      # ── 3. Copy files to server ──────────────────────────────────────────
+      - name: Sync project to server
+        run: |
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            --exclude='.env' \
+            ./ ubuntu@57.128.201.196:/opt/calmdriver/
+
+      # ── 4. Deploy on server ──────────────────────────────────────────────
+      - name: Deploy via SSH
+        run: |
+          ssh ubuntu@57.128.201.196 << 'ENDSSH'
+            set -e
+            cd /opt/calmdriver
+
+            # Write env file from GitHub Secrets (passed as env vars)
+            cat > .env << EOF
+          SMTP_HOST=${{ secrets.SMTP_HOST }}
+          SMTP_PORT=${{ secrets.SMTP_PORT }}
+          SMTP_USER=${{ secrets.SMTP_USER }}
+          SMTP_PASS=${{ secrets.SMTP_PASS }}
+          MAIL_TO=${{ secrets.MAIL_TO }}
+          CORS_ORIGIN=https://calmdriver.pl
+          EOF
+
+            # Pull & rebuild containers
+            docker compose pull 2>/dev/null || true
+            docker compose build --no-cache
+            docker compose up -d --remove-orphans
+
+            # Clean up old images
+            docker image prune -f
+
+            echo "✅ Deployment complete!"
+            docker compose ps
+          ENDSSH
+
+      # ── 5. Health check ──────────────────────────────────────────────────
+      - name: Health check
+        run: |
+          sleep 10
+          curl -sf http://57.128.201.196/health && echo "✅ Site is live!" || echo "⚠️ Health check failed"
