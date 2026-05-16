@@ -1484,13 +1484,13 @@
       <h3 data-lang-en>Your calculator</h3>
 
       <div class="calc-toggle" role="group">
-        <button class="calc-toggle-btn active" id="btn-own" onclick="setMode('own')">
-          <span data-lang-pl>🚗 Własne auto</span>
-          <span data-lang-en>🚗 Own car</span>
+        <button class="calc-toggle-btn active" id="btn-own">
+          <span data-lang-pl>Własne auto</span>
+          <span data-lang-en>Own car</span>
         </button>
-        <button class="calc-toggle-btn" id="btn-rental" onclick="setMode('rental')">
-          <span data-lang-pl>🔑 Wynajem auta</span>
-          <span data-lang-en>🔑 Car rental</span>
+        <button class="calc-toggle-btn" id="btn-rental">
+          <span data-lang-pl>Wynajem auta</span>
+          <span data-lang-en>Car rental</span>
         </button>
       </div>
 
@@ -1500,8 +1500,7 @@
           <span data-lang-en>Hours per week</span>
           <span class="calc-value-badge" id="hours-display">40h</span>
         </div>
-        <input type="range" id="hours-slider" min="5" max="80" value="40"
-               oninput="updateCalc()" style="--pct: 43.75%;" />
+        <input type="range" id="hours-slider" min="5" max="80" value="40" style="--pct: 43.75%;" />
         <div class="calc-hint" data-lang-pl>Min. 5h — Maks. 80h tygodniowo</div>
         <div class="calc-hint" data-lang-en>Min. 5h — Max. 80h per week</div>
       </div>
@@ -1547,8 +1546,6 @@
         </div>
         <p data-lang-pl>Najlepsza opcja jeśli masz własny pojazd spełniający wymagania platform. Maksymalne zarobki bez kosztu wynajmu.</p>
         <p data-lang-en>The best option if you have your own vehicle that meets platform requirements. Maximum earnings with no rental cost.</p>
-        <div class="tag" data-lang-pl>Wyższe zarobki</div>
-        <div class="tag" data-lang-en>Higher earnings</div>
       </div>
       <div class="info-card reveal">
         <div class="info-card-header">
@@ -1558,8 +1555,6 @@
         </div>
         <p data-lang-pl>Nie masz auta? Żaden problem. Wynajmij od nas gotowe auto, już aktywowane na platformach. Kaucja 500 zł (zwrotna).</p>
         <p data-lang-en>No car? No problem. Rent a ready car from us, already activated on all platforms. Deposit 500 PLN (refundable).</p>
-        <div class="tag" data-lang-pl>Natychmiastowy start</div>
-        <div class="tag" data-lang-en>Immediate start</div>
       </div>
       <div class="info-card reveal">
         <div class="info-card-header">
@@ -1569,8 +1564,6 @@
         </div>
         <p data-lang-pl>Pierwszy tydzień wynajmu tylko <strong style="color:var(--gold)">250 zł</strong> zamiast 350–400 zł. Sprawdź czy praca z nami jest dla Ciebie!</p>
         <p data-lang-en>First week of rental only <strong style="color:var(--gold)">250 PLN</strong> instead of 350–400 PLN. Check if working with us is right for you!</p>
-        <div class="tag" data-lang-pl>Tylko 250 zł / 1. tydzień</div>
-        <div class="tag" data-lang-en>Only 250 PLN / 1st week</div>
       </div>
     </div>
   </div>
@@ -1965,49 +1958,50 @@
   /* ════════════════════════════════
      EARNINGS CALCULATOR
   ════════════════════════════════ */
-  let calcMode = 'own';
+  (function () {
+    let calcMode = 'own';
+    const RATE = 32;
+    const RENTAL_COST = 375;
 
-  function setMode(mode) {
-    calcMode = mode;
-    document.getElementById('btn-own').classList.toggle('active', mode === 'own');
-    document.getElementById('btn-rental').classList.toggle('active', mode === 'rental');
-    document.getElementById('rental-cost-row').style.display = mode === 'rental' ? 'flex' : 'none';
-    updateCalc();
-  }
-
-  function fmt(n) {
-    return new Intl.NumberFormat('pl-PL').format(Math.round(n)) + ' zł';
-  }
-
-  function updateCalc() {
-    const slider = document.getElementById('hours-slider');
-    const hours = parseInt(slider.value);
-    const max = parseInt(slider.max), min = parseInt(slider.min);
-    const pct = ((hours - min) / (max - min) * 100).toFixed(2) + '%';
-    slider.style.setProperty('--pct', pct);
-    document.getElementById('hours-display').textContent = hours + 'h';
-
-    const rateOwn = 32;    // PLN/h net (own car, after platform commission + fuel)
-    const rateRental = 32; // same gross rate, rental cost is fixed weekly
-
-    let weekly, hourly;
-    if (calcMode === 'own') {
-      weekly = hours * rateOwn;
-      hourly = rateOwn;
-    } else {
-      const rentalCost = 375;
-      weekly = Math.max(0, hours * rateRental - rentalCost);
-      hourly = hours > 0 ? weekly / hours : 0;
+    function fmt(n) {
+      return new Intl.NumberFormat('pl-PL').format(Math.round(n)) + ' zł';
     }
-    const monthly = weekly * 4.33;
 
-    document.getElementById('hourly-rate').textContent = Math.round(hourly) + ' zł';
-    document.getElementById('weekly-earn').textContent = fmt(weekly);
-    document.getElementById('monthly-earn').textContent = fmt(monthly);
-  }
+    function updateCalc() {
+      const slider = document.getElementById('hours-slider');
+      const hours = parseInt(slider.value);
+      const pct = ((hours - 5) / 75 * 100).toFixed(2) + '%';
+      slider.style.setProperty('--pct', pct);
+      document.getElementById('hours-display').textContent = hours + 'h';
 
-  document.getElementById('hours-slider').addEventListener('input', updateCalc);
-  updateCalc();
+      let weekly, hourly;
+      if (calcMode === 'own') {
+        weekly = hours * RATE;
+        hourly = RATE;
+      } else {
+        weekly = Math.max(0, hours * RATE - RENTAL_COST);
+        hourly = hours > 0 ? weekly / hours : 0;
+      }
+
+      document.getElementById('hourly-rate').textContent = Math.round(hourly) + ' zł';
+      document.getElementById('weekly-earn').textContent = fmt(weekly);
+      document.getElementById('monthly-earn').textContent = fmt(weekly * 4.33);
+    }
+
+    function setMode(mode) {
+      calcMode = mode;
+      document.getElementById('btn-own').classList.toggle('active', mode === 'own');
+      document.getElementById('btn-rental').classList.toggle('active', mode === 'rental');
+      document.getElementById('rental-cost-row').style.display = mode === 'rental' ? 'flex' : 'none';
+      updateCalc();
+    }
+
+    document.getElementById('btn-own').addEventListener('click', function () { setMode('own'); });
+    document.getElementById('btn-rental').addEventListener('click', function () { setMode('rental'); });
+    document.getElementById('hours-slider').addEventListener('input', updateCalc);
+
+    updateCalc();
+  }());
 
   /* ════════════════════════════════
      COUNTER ANIMATION
