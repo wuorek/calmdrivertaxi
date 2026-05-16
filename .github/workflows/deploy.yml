@@ -59,6 +59,11 @@ jobs:
             # Clean up old images
             docker image prune -f
 
+            # Install nginx site config
+            sudo cp /opt/calmdriver/nginx/calmdriver.nginx.conf /etc/nginx/sites-available/calmdriver
+            sudo ln -sf /etc/nginx/sites-available/calmdriver /etc/nginx/sites-enabled/calmdriver
+            sudo nginx -t && sudo systemctl reload nginx
+
             echo "✅ Deployment complete!"
             docker compose ps
           ENDSSH
