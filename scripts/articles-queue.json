@@ -1,0 +1,17 @@
+{
+  "_info": "Kolejka słów kluczowych dla bloga calmdriver.pl. Status: pending = do napisania, done = opublikowane, skipped = pominięte. Priority: 1=najważniejsze.",
+  "queue": [
+    { "keyword": "ile zarabia kierowca Bolt Białystok 2026", "priority": 1, "status": "pending" },
+    { "keyword": "jak zostać kierowcą Uber Białystok", "priority": 2, "status": "pending" },
+    { "keyword": "Bolt czy Uber co się bardziej opłaca", "priority": 3, "status": "pending" },
+    { "keyword": "wynajem auta do pracy w taxi Białystok", "priority": 4, "status": "pending" },
+    { "keyword": "praca kierowcy taxi dla studenta Białystok", "priority": 5, "status": "pending" },
+    { "keyword": "FreeNow rejestracja kierowca Białystok", "priority": 6, "status": "pending" },
+    { "keyword": "podatki kierowca Uber Bolt jak rozliczać", "priority": 7, "status": "pending" },
+    { "keyword": "ile godzin warto pracować jako kierowca Uber", "priority": 8, "status": "pending" },
+    { "keyword": "ubezpieczenie auta do taksówki Białystok", "priority": 9, "status": "pending" },
+    { "keyword": "najlepsze godziny do jazdy Bolt Uber Białystok", "priority": 10, "status": "pending" },
+    { "keyword": "praca kierowcy Bolt wymagania dokumenty", "priority": 11, "status": "pending" },
+    { "keyword": "czy warto pracować jako kierowca Uber opinia", "priority": 12, "status": "pending" }
+  ]
+}

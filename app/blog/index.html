@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — CalmDriver Taxi Białystok</title>
+  <meta name="description" content="Porady dla kierowców Bolt, Uber i FreeNow w Białymstoku. Dowiedz się ile możesz zarobić, jak zacząć i jak wybrać najlepszą platformę." />
+  <link rel="canonical" href="https://calmdriver.pl/blog/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07070d;
+      --surface: #0e0e18;
+      --card: #13131f;
+      --card2: #17172a;
+      --border: #1f1f35;
+      --border2: #2a2a45;
+      --gold: #f5c518;
+      --gold2: #ffd84d;
+      --gold-dim: rgba(245,197,24,0.12);
+      --gold-glow: rgba(245,197,24,0.35);
+      --green: #00d4a0;
+      --text: #f0f0fa;
+      --muted: #7070a0;
+      --muted2: #9090b8;
+      --radius: 16px;
+      --radius-lg: 24px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0;
+      z-index: 100;
+      padding: 0 clamp(20px, 5vw, 80px);
+      height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(7,7,13,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--gold);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+    }
+    .nav-logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      color: var(--text);
+    }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-right {
+      display: flex; align-items: center; gap: 20px;
+    }
+    .nav-right a {
+      color: var(--muted2); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 8px 20px;
+      background: var(--gold); color: #000;
+      border-radius: 8px; font-weight: 700;
+      font-size: 0.85rem; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold2); color: #000 !important; }
+
+    /* ─── HERO ─── */
+    .blog-hero {
+      padding: 80px clamp(20px, 5vw, 80px) 60px;
+      text-align: center;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.06) 0%, transparent 70%);
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    .blog-hero-label::before, .blog-hero-label::after {
+      content: ''; width: 24px; height: 2px; background: var(--gold);
+    }
+    .blog-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .blog-hero h1 span { color: var(--gold); }
+    .blog-hero p {
+      color: var(--muted2); font-size: 1.05rem;
+      max-width: 520px; margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── GRID ─── */
+    .blog-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px clamp(20px, 5vw, 80px) 100px;
+    }
+
+    .blog-empty {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted2);
+    }
+    .blog-empty p { font-size: 1.1rem; margin-bottom: 24px; }
+    .blog-empty a {
+      color: var(--gold); text-decoration: none; font-weight: 600;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .blog-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      text-decoration: none;
+      display: flex; flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .blog-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .blog-card-body {
+      padding: 28px;
+      flex: 1;
+      display: flex; flex-direction: column;
+    }
+    .blog-card-meta {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px;
+    }
+    .blog-card-cat {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid rgba(245,197,24,0.2);
+      border-radius: 6px;
+      padding: 3px 10px;
+    }
+    .blog-card-time {
+      font-size: 0.75rem; color: var(--muted);
+      font-weight: 500;
+    }
+    .blog-card-date {
+      font-size: 0.75rem; color: var(--muted);
+      margin-left: auto;
+    }
+    .blog-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .blog-card p {
+      color: var(--muted2);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      flex: 1;
+    }
+    .blog-card-footer {
+      padding: 16px 28px;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px clamp(20px, 5vw, 80px);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-logo {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .footer-logo-icon {
+      width: 30px; height: 30px;
+      background: var(--gold); border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .footer-logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 0.95rem;
+      color: var(--text);
+    }
+    .footer-logo-text span { color: var(--gold); }
+    .footer-copy {
+      color: var(--muted); font-size: 0.8rem;
+    }
+    .footer-links {
+      display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--muted2); text-decoration: none;
+      font-size: 0.82rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .nav-right a:not(.nav-cta) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">🚕</div>
+    <div class="nav-logo-text">Calm<span>Driver</span></div>
+  </a>
+  <div class="nav-right">
+    <a href="/">Strona główna</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/#contact" class="nav-cta">Dołącz teraz</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="blog-hero-label">Blog</div>
+  <h1>Porady dla <span>kierowców</span></h1>
+  <p>Wszystko o pracy na platformach Bolt, Uber i FreeNow w Białymstoku — zarobki, wynajem, pierwsze kroki.</p>
+</div>
+
+<main class="blog-main">
+  <!-- BLOG_CARDS_START -->
+  <div class="blog-empty">
+    <p>Pierwsze artykuły pojawią się wkrótce.</p>
+    <a href="/">← Wróć na stronę główną</a>
+  </div>
+  <!-- BLOG_CARDS_END -->
+</main>
+
+<footer>
+  <a href="/" class="footer-logo">
+    <div class="footer-logo-icon">🚕</div>
+    <div class="footer-logo-text">Calm<span>Driver</span> Taxi</div>
+  </a>
+  <div class="footer-copy">© 2025 CalmDriver Taxi · Białystok</div>
+  <div class="footer-links">
+    <a href="/">Strona główna</a>
+    <a href="/#contact">Kontakt</a>
+    <a href="tel:+48739980388">📞 739 980 388</a>
+  </div>
+</footer>
+
+</body>
+</html>
