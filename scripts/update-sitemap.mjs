@@ -15,10 +15,12 @@ const PROJECT_ROOT = path.resolve(__dirname, '..');
 const SITEMAP_PATH = path.join(PROJECT_ROOT, 'app', 'sitemap.xml');
 const ARTICLES_INDEX_PATH = path.join(__dirname, 'articles-index.json');
 
+const TODAY = new Date().toISOString().split('T')[0];
+
 const STATIC_PAGES = [
-  { loc: 'https://calmdriver.pl/',      priority: '1.0', changefreq: 'monthly',  hreflang: true },
-  { loc: 'https://calmdriver.pl/faq/',  priority: '0.8', changefreq: 'weekly',   hreflang: false },
-  { loc: 'https://calmdriver.pl/blog/', priority: '0.8', changefreq: 'daily',    hreflang: false },
+  { loc: 'https://calmdriver.pl/',      priority: '1.0', changefreq: 'monthly',  hreflang: true,  date: TODAY },
+  { loc: 'https://calmdriver.pl/faq/',  priority: '0.8', changefreq: 'weekly',   hreflang: false, date: TODAY },
+  { loc: 'https://calmdriver.pl/blog/', priority: '0.8', changefreq: 'daily',    hreflang: false, date: TODAY },
 ];
 
 function buildUrlEntry({ loc, priority, changefreq, hreflang, date }) {
