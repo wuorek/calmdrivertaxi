@@ -1199,6 +1199,77 @@
     [data-lang-pl], [data-lang-en] { }
     [data-lang="en"] [data-lang-pl] { display: none; }
     [data-lang="pl"] [data-lang-en] { display: none; }
+
+    /* ─── FAQ ─── */
+    .faq-list {
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq-item.open {
+      border-color: var(--gold);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 24px 28px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-item.open .faq-question { color: var(--gold); }
+
+    .faq-icon {
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 1px solid var(--border2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      transition: transform 0.3s, border-color 0.3s;
+      color: var(--muted2);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 28px 24px;
+      color: var(--muted2);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .faq-answer-inner strong { color: var(--text); }
   </style>
 </head>
 <body>
@@ -1229,6 +1300,7 @@
     <li><a href="#why" data-lang-pl>Dlaczego my?</a><a href="#why" data-lang-en>Why us?</a></li>
     <li><a href="#calculator" data-lang-pl>Kalkulator</a><a href="#calculator" data-lang-en>Calculator</a></li>
     <li><a href="#rental" data-lang-pl>Wynajem</a><a href="#rental" data-lang-en>Rental</a></li>
+    <li><a href="#faq" data-lang-pl>FAQ</a><a href="#faq" data-lang-en>FAQ</a></li>
     <li><a href="#contact" data-lang-pl>Kontakt</a><a href="#contact" data-lang-en>Contact</a></li>
   </ul>
 
@@ -1751,6 +1823,106 @@
 
 <div class="glow-divider"></div>
 
+<!-- ═══ FAQ ═══ -->
+<section id="faq">
+  <div class="section-label" data-lang-pl>Często zadawane pytania</div>
+  <div class="section-label" data-lang-en>Frequently asked questions</div>
+  <h2 data-lang-pl>Masz <span class="accent">pytania?</span></h2>
+  <h2 data-lang-en>Have <span class="accent">questions?</span></h2>
+  <p class="section-subtitle" data-lang-pl>Zebraliśmy odpowiedzi na najczęściej zadawane pytania. Czegoś brakuje? Napisz do nas.</p>
+  <p class="section-subtitle" data-lang-en>We've gathered answers to the most common questions. Something missing? Write to us.</p>
+
+  <div class="faq-list">
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        <span data-lang-pl>Ile mogę zarobić jako kierowca w Białymstoku?</span>
+        <span data-lang-en>How much can I earn as a driver in Białystok?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          <span data-lang-pl>Zarobki zależą od liczby przepracowanych godzin i platform, na których działasz. Przy pracy <strong>40 godzin tygodniowo</strong> na Bolt, Uber i FreeNow możesz zarabiać od <strong>4 000 do 7 000 zł miesięcznie</strong> netto. Nasz kalkulator powyżej pomoże oszacować Twoje indywidualne zarobki.</span>
+          <span data-lang-en>Earnings depend on hours worked and platforms you use. Working <strong>40 hours per week</strong> on Bolt, Uber and FreeNow you can earn between <strong>4,000 and 7,000 PLN net per month</strong>. Use our calculator above to estimate your individual earnings.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        <span data-lang-pl>Czy muszę mieć własny samochód?</span>
+        <span data-lang-en>Do I need my own car?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          <span data-lang-pl>Nie. Możesz pracować z <strong>własnym autem</strong> lub wynająć pojazd z naszej floty. Wynajem standardowy to <strong>700 zł tygodniowo</strong>, a dla studentów mamy specjalną ofertę od <strong>550 zł tygodniowo</strong>. Kaucja zwrotna wynosi 500 zł.</span>
+          <span data-lang-en>No. You can work with your <strong>own car</strong> or rent a vehicle from our fleet. Standard rental is <strong>700 PLN per week</strong>, and we have a special student offer from <strong>550 PLN per week</strong>. The refundable deposit is 500 PLN.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        <span data-lang-pl>Jak długo trwa rejestracja na platformach?</span>
+        <span data-lang-en>How long does platform registration take?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          <span data-lang-pl>Rejestracja na platformach Bolt, Uber i FreeNow zajmuje zazwyczaj <strong>1–2 dni robocze</strong>. Pomagamy Ci przejść przez cały proces — od dokumentów po pierwsze zlecenie.</span>
+          <span data-lang-en>Registration on Bolt, Uber and FreeNow typically takes <strong>1–2 business days</strong>. We help you through the entire process — from documents to your first ride.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        <span data-lang-pl>Jakie dokumenty są potrzebne?</span>
+        <span data-lang-en>What documents are required?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          <span data-lang-pl>Potrzebujesz <strong>prawa jazdy kategorii B</strong> (min. 3 lata), dowodu osobistego lub paszportu oraz numeru NIP lub PESEL. W przypadku wynajmu auta wymagana jest kaucja zwrotna. Skontaktuj się z nami — przeprowadzimy Cię krok po kroku.</span>
+          <span data-lang-en>You need a <strong>category B driving licence</strong> (min. 3 years), ID card or passport, and a NIP or PESEL number. A refundable deposit is required for car rental. Contact us — we'll guide you step by step.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        <span data-lang-pl>Czy mogę pracować w dowolnych godzinach?</span>
+        <span data-lang-en>Can I work whenever I want?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          <span data-lang-pl>Tak. Praca na platformach jest w pełni elastyczna — <strong>sam decydujesz kiedy i ile pracujesz</strong>. Nie ma minimalnej liczby godzin ani stałego grafiku. Idealne rozwiązanie dla studentów i osób szukających dodatkowego dochodu.</span>
+          <span data-lang-en">Yes. Platform work is fully flexible — <strong>you decide when and how much you work</strong>. There is no minimum hours or fixed schedule. Perfect for students and those looking for extra income.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        <span data-lang-pl>Czy CalmDriver działa tylko w Białymstoku?</span>
+        <span data-lang-en>Does CalmDriver operate only in Białystok?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-answer-inner">
+          <span data-lang-pl>Aktualnie działamy na terenie <strong>Białegostoku i okolic</strong>. Jeśli mieszkasz w innym mieście — skontaktuj się z nami, chętnie porozmawiamy o możliwościach.</span>
+          <span data-lang-en>We currently operate in <strong>Białystok and the surrounding area</strong>. If you live in another city — contact us, we're happy to discuss the options.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
   <div class="section-label" data-lang-pl>Kontakt</div>
@@ -1875,6 +2047,24 @@
 </footer>
 
 <script>
+  /* ════════════════════════════════
+     FAQ ACCORDION
+  ════════════════════════════════ */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
   /* ════════════════════════════════
      GSAP REGISTRATION
   ════════════════════════════════ */
@@ -2173,6 +2363,62 @@
     "contactType": "customer service",
     "availableLanguage": ["Polish", "English"]
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile mogę zarobić jako kierowca w Białymstoku?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Przy pracy 40 godzin tygodniowo na platformach Bolt, Uber i FreeNow możesz zarabiać od 4 000 do 7 000 zł miesięcznie netto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy muszę mieć własny samochód?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nie. Możesz pracować z własnym autem lub wynająć pojazd z naszej floty. Wynajem standardowy to 700 zł tygodniowo, a dla studentów od 550 zł tygodniowo. Kaucja zwrotna wynosi 500 zł."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak długo trwa rejestracja na platformach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rejestracja na platformach Bolt, Uber i FreeNow zajmuje zazwyczaj 1–2 dni robocze. CalmDriver pomaga przejść przez cały proces."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jakie dokumenty są potrzebne?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Potrzebujesz prawa jazdy kategorii B (min. 3 lata), dowodu osobistego lub paszportu oraz numeru NIP lub PESEL. W przypadku wynajmu auta wymagana jest kaucja zwrotna 500 zł."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę pracować w dowolnych godzinach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Praca na platformach jest w pełni elastyczna — sam decydujesz kiedy i ile pracujesz. Nie ma minimalnej liczby godzin ani stałego grafiku."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy CalmDriver działa tylko w Białymstoku?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CalmDriver aktualnie działa na terenie Białegostoku i okolic."
+      }
+    }
+  ]
 }
 </script>
 </body>
