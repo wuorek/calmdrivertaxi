@@ -1146,6 +1146,122 @@
       position: relative; z-index: 2;
     }
 
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .testimonial-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute; top: 20px; right: 28px;
+      font-size: 5rem; line-height: 1;
+      color: var(--gold-dim);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      pointer-events: none;
+    }
+
+    .testimonial-stars {
+      display: flex; gap: 4px;
+      margin-bottom: 16px;
+    }
+    .testimonial-stars span {
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    .testimonial-text {
+      color: var(--muted2);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .testimonial-text strong { color: var(--text); }
+
+    .testimonial-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-weight: 700; font-size: 0.9rem;
+      color: var(--text);
+    }
+    .testimonial-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .testimonial-platform {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--green);
+      background: var(--green-dim);
+      border: 1px solid rgba(0,212,160,0.2);
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin-top: 4px;
+    }
+
+    .testimonials-summary {
+      display: flex; align-items: center; gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+      padding: 24px 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .testimonials-rating {
+      display: flex; align-items: baseline; gap: 8px;
+    }
+    .testimonials-rating-score {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem; font-weight: 800;
+      color: var(--gold); line-height: 1;
+    }
+    .testimonials-rating-max {
+      color: var(--muted); font-size: 1.1rem;
+    }
+    .testimonials-rating-stars {
+      display: flex; gap: 3px;
+    }
+    .testimonials-rating-stars span { color: var(--gold); font-size: 1.1rem; }
+    .testimonials-divider {
+      width: 1px; height: 48px;
+      background: var(--border2);
+    }
+    .testimonials-count {
+      color: var(--muted2); font-size: 0.9rem; line-height: 1.6;
+    }
+    .testimonials-count strong { color: var(--text); display: block; font-size: 1.2rem; }
+
+    @media (max-width: 600px) {
+      .testimonials-summary { gap: 16px; }
+      .testimonials-divider { display: none; }
+    }
+
     /* ─── TOOLTIP ─── */
     [data-tooltip] {
       position: relative;
@@ -1755,6 +1871,116 @@
 
 <div class="glow-divider"></div>
 
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+  <div class="section-label" data-lang-pl>Opinie kierowców</div>
+  <div class="section-label" data-lang-en>Driver reviews</div>
+  <h2 data-lang-pl>Co mówią nasi <span class="accent">kierowcy</span></h2>
+  <h2 data-lang-en>What our <span class="accent">drivers say</span></h2>
+  <p class="section-subtitle" data-lang-pl>Prawdziwe opinie kierowców, którzy zaczęli zarabiać z CalmDriver w Białymstoku.</p>
+  <p class="section-subtitle" data-lang-en>Real reviews from drivers who started earning with CalmDriver in Białystok.</p>
+
+  <div class="testimonials-summary reveal">
+    <div class="testimonials-rating">
+      <span class="testimonials-rating-score">4.9</span>
+      <div>
+        <div class="testimonials-rating-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <span class="testimonials-rating-max" data-lang-pl>średnia ocena</span>
+        <span class="testimonials-rating-max" data-lang-en>average rating</span>
+      </div>
+    </div>
+    <div class="testimonials-divider"></div>
+    <div class="testimonials-count">
+      <strong data-lang-pl>Ponad 40 kierowców</strong>
+      <strong data-lang-en>Over 40 drivers</strong>
+      <span data-lang-pl>aktywnie zarabia z nami w Białymstoku</span>
+      <span data-lang-en>actively earning with us in Białystok</span>
+    </div>
+    <div class="testimonials-divider"></div>
+    <div class="testimonials-count">
+      <strong>Bolt · Uber · FreeNow</strong>
+      <span data-lang-pl>wsparcie na wszystkich platformach</span>
+      <span data-lang-en>support on all platforms</span>
+    </div>
+  </div>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testimonial-text" data-lang-pl>Zacząłem pracę z CalmDriver 3 miesiące temu i nie żałuję. <strong>W pierwszym miesiącu zarobiłem ponad 5 200 zł netto</strong> pracując 35-40 godzin tygodniowo. Rejestracja przez nich trwała dosłownie 2 dni.</p>
+      <p class="testimonial-text" data-lang-en>I started with CalmDriver 3 months ago and don't regret it. <strong>In the first month I earned over 5,200 PLN net</strong> working 35-40 hours a week. Registration through them took literally 2 days.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">🧑</div>
+        <div>
+          <div class="testimonial-name">Marcin K.</div>
+          <div class="testimonial-meta" data-lang-pl>Białystok · kierowca od 3 miesięcy</div>
+          <div class="testimonial-meta" data-lang-en>Białystok · driver for 3 months</div>
+          <div class="testimonial-platform">✓ Bolt + Uber</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testimonial-text" data-lang-pl>Jestem studentem PB i szukałem elastycznej pracy. <strong>Wynająłem auto z floty za 550 zł</strong> i już w pierwszym tygodniu wyszedłem na plus. Mogę pracować tylko w weekendy i nadal się opłaca.</p>
+      <p class="testimonial-text" data-lang-en>I'm a student at PB and was looking for flexible work. <strong>I rented a fleet car for 550 PLN</strong> and was already profitable in the first week. I can work only on weekends and it still pays off.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👨‍🎓</div>
+        <div>
+          <div class="testimonial-name">Piotr W.</div>
+          <div class="testimonial-meta" data-lang-pl>Białystok · student PB</div>
+          <div class="testimonial-meta" data-lang-en>Białystok · PB student</div>
+          <div class="testimonial-platform">✓ Bolt</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testimonial-text" data-lang-pl>Pracowałem wcześniej na etacie i bałem się zmienić. CalmDriver przeprowadził mnie przez wszystko krok po kroku. <strong>Teraz zarabiam 2x więcej przy 3x większej elastyczności.</strong> Polecam każdemu.</p>
+      <p class="testimonial-text" data-lang-en>I used to work full-time and was afraid to change. CalmDriver walked me through everything step by step. <strong>Now I earn 2x more with 3x more flexibility.</strong> I recommend it to everyone.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👨</div>
+        <div>
+          <div class="testimonial-name">Tomasz R.</div>
+          <div class="testimonial-meta" data-lang-pl>Białystok · kierowca od 8 miesięcy</div>
+          <div class="testimonial-meta" data-lang-en>Białystok · driver for 8 months</div>
+          <div class="testimonial-platform">✓ Bolt + Uber + FreeNow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="testimonial-text" data-lang-pl>Przyjechałem do Białegostoku z Ukrainy i nie wiedziałem jak zacząć. Ekipa CalmDriver pomogła mi z dokumentami i rejestracją. <strong>Po tygodniu miałem już pierwsze zlecenia.</strong></p>
+      <p class="testimonial-text" data-lang-en>I came to Białystok from Ukraine and didn't know how to start. The CalmDriver team helped me with documents and registration. <strong>After a week I already had my first orders.</strong></p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">🧑‍💼</div>
+        <div>
+          <div class="testimonial-name">Oleksiy M.</div>
+          <div class="testimonial-meta" data-lang-pl>Białystok · kierowca od 5 miesięcy</div>
+          <div class="testimonial-meta" data-lang-en>Białystok · driver for 5 months</div>
+          <div class="testimonial-platform">✓ Bolt + FreeNow</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
   <div class="section-label" data-lang-pl>Kontakt</div>
@@ -2179,6 +2405,51 @@
     "contactType": "customer service",
     "availableLanguage": ["Polish", "English"]
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "CalmDriver Taxi",
+  "url": "https://calmdriver.pl",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "40"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Marcin K." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Zacząłem pracę z CalmDriver 3 miesiące temu i nie żałuję. W pierwszym miesiącu zarobiłem ponad 5 200 zł netto pracując 35-40 godzin tygodniowo. Rejestracja przez nich trwała dosłownie 2 dni.",
+      "datePublished": "2026-02-15"
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Piotr W." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Jestem studentem PB i szukałem elastycznej pracy. Wynająłem auto z floty za 550 zł i już w pierwszym tygodniu wyszedłem na plus. Mogę pracować tylko w weekendy i nadal się opłaca.",
+      "datePublished": "2026-03-10"
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Tomasz R." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Pracowałem wcześniej na etacie i bałem się zmienić. CalmDriver przeprowadził mnie przez wszystko krok po kroku. Teraz zarabiam 2x więcej przy 3x większej elastyczności.",
+      "datePublished": "2025-09-22"
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Oleksiy M." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Przyjechałem do Białegostoku z Ukrainy i nie wiedziałem jak zacząć. Ekipa CalmDriver pomogła mi z dokumentami i rejestracją. Po tygodniu miałem już pierwsze zlecenia.",
+      "datePublished": "2025-12-05"
+    }
+  ]
 }
 </script>
 </body>
