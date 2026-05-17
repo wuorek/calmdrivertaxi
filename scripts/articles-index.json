@@ -1,4 +1,13 @@
 {
   "_info": "Metadane opublikowanych artykułów bloga CalmDriver. Używane przez generator do odtworzenia blog/index.html.",
-  "articles": []
+  "articles": [
+    {
+      "slug": "ile-zarabia-kierowca-bolt-bialystok-w-2026-prawda-o-zyskach-i-wyzwania",
+      "title": "Ile Zarabia Kierowca Bolt Białystok w 2026? Prawda o Zyskach i Wyzwaniach",
+      "excerpt": "Zastanawiasz się, ile realnie zarabia kierowca Bolt w Białymstoku w 2026 roku? Odkryj, co czeka Cię na ulicach, poznaj konkretne liczby i dowiedz się, jak CalmDriver Taxi pomaga maksymalizować Twoje zyski od pierwszego dnia.",
+      "category": "Zarobki",
+      "readTime": "7 min",
+      "date": "2026-05-17"
+    }
+  ]
 }
