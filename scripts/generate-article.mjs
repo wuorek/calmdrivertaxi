@@ -172,7 +172,7 @@ ZWRÓĆ WYŁĄCZNIE JSON (bez markdown, bez tekstu przed/po):
 
 Kategoria musi być JEDNĄ z: Zarobki | Platformy | Wynajem | Porady | Prawo i podatki`;
 
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${GEMINI_API_KEY}`;
 
   const response = await fetch(url, {
     method: 'POST',
