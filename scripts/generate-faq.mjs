@@ -23,7 +23,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, '..');
-const INDEX_PATH = path.join(PROJECT_ROOT, 'app', 'index.html');
+const INDEX_PATH = path.join(PROJECT_ROOT, 'app', 'faq', 'index.html');
 const QUEUE_PATH = path.join(__dirname, 'faq-queue.json');
 
 // ── Config ────────────────────────────────────────────────────────────────────
@@ -63,7 +63,7 @@ function markKeywordStatus(keyword, status = 'done') {
 // ── HTML Parsing ──────────────────────────────────────────────────────────────
 
 function getExistingQuestions(html) {
-  const matches = [...html.matchAll(/<span data-lang-pl>([^<]+)<\/span>\s*<span data-lang-en>[^<]+<\/span>\s*<span class="faq-icon">/g)];
+  const matches = [...html.matchAll(/<span>([^<]+)<\/span>\s*<span class="faq-icon">/g)];
   return matches.map(m => m[1].trim());
 }
 
@@ -164,20 +164,18 @@ function parseGeneratedFAQ(raw) {
 
 // ── HTML Injection ────────────────────────────────────────────────────────────
 
-const FAQ_ITEM_MARKER = '\n  </div>\n</section>\n\n<div class="glow-divider"></div>\n\n<!-- ═══ CONTACT';
+const FAQ_ITEM_MARKER = '\n  <!-- FAQ_ITEMS_END -->';
 
-function buildFAQItemHTML({ question_pl, question_en, answer_pl, answer_en }) {
+function buildFAQItemHTML({ question_pl, answer_pl }) {
   return `
-    <div class="faq-item reveal">
+    <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
-        <span data-lang-pl>${question_pl}</span>
-        <span data-lang-en>${question_en}</span>
+        <span>${question_pl}</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer" role="region">
         <div class="faq-answer-inner">
-          <span data-lang-pl>${answer_pl}</span>
-          <span data-lang-en>${answer_en}</span>
+          ${answer_pl}
         </div>
       </div>
     </div>
@@ -318,7 +316,7 @@ async function main() {
 
     if (usedKeyword) markKeywordStatus(usedKeyword.keyword, 'done');
 
-    execSync(`git -C "${PROJECT_ROOT}" add "app/index.html"`, { stdio: 'pipe' });
+    execSync(`git -C "${PROJECT_ROOT}" add "app/faq/index.html"`, { stdio: 'pipe' });
     if (usedKeyword || skippedKeywords.length > 0) {
       execSync(`git -C "${PROJECT_ROOT}" add "scripts/faq-queue.json"`, { stdio: 'pipe' });
     }
@@ -333,7 +331,7 @@ async function main() {
     console.error('❌ Błąd git:', err.message);
     // Rollback HTML
     try {
-      execSync(`git -C "${PROJECT_ROOT}" checkout -- app/index.html`, { stdio: 'pipe' });
+      execSync(`git -C "${PROJECT_ROOT}" checkout -- app/faq/index.html`, { stdio: 'pipe' });
       console.log('🧹 index.html przywrócony (rollback).');
     } catch {}
     process.exit(1);
