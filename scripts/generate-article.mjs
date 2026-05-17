@@ -20,6 +20,7 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
+import { regenerateSitemap } from './update-sitemap.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, '..');
@@ -554,6 +555,9 @@ async function main() {
   regenerateBlogIndex(index.articles);
   console.log('📝 blog/index.html zaktualizowany');
 
+  // Regenerate sitemap
+  regenerateSitemap();
+
   // Git commit & push
   const gitEnv = {
     ...process.env,
@@ -570,7 +574,7 @@ async function main() {
 
     if (usedKeyword) markKeywordStatus(usedKeyword.keyword, 'done');
 
-    execSync(`git -C "${PROJECT_ROOT}" add "app/blog/${slug}.html" "app/blog/index.html" "scripts/articles-index.json"`, { stdio: 'pipe' });
+    execSync(`git -C "${PROJECT_ROOT}" add "app/blog/${slug}.html" "app/blog/index.html" "app/sitemap.xml" "scripts/articles-index.json"`, { stdio: 'pipe' });
     if (usedKeyword || skippedKeywords.length > 0) {
       execSync(`git -C "${PROJECT_ROOT}" add "scripts/articles-queue.json"`, { stdio: 'pipe' });
     }
