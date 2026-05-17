@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://calmdriver.pl/sitemap.xml
