@@ -21,7 +21,7 @@ set -euo pipefail
 # ── Ścieżki ───────────────────────────────────────────────────────────────────
 REPO_DIR="/opt/calmdriver"
 ENV_FILE="${REPO_DIR}/.env"
-LOG_FILE="/opt/calmdriver/article-cron.log"
+LOG_FILE="/var/log/calmdriver/article-cron.log"
 SCRIPT="${REPO_DIR}/scripts/generate-article.mjs"
 
 # ── Logging ───────────────────────────────────────────────────────────────────

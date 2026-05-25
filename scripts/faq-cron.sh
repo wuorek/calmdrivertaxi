@@ -20,7 +20,7 @@ set -euo pipefail
 # ── Ścieżki ───────────────────────────────────────────────────────────────────
 REPO_DIR="/opt/calmdriver"
 ENV_FILE="${REPO_DIR}/.env"
-LOG_FILE="/opt/calmdriver/faq-cron.log"
+LOG_FILE="/var/log/calmdriver/faq-cron.log"
 SCRIPT="${REPO_DIR}/scripts/generate-faq.mjs"
 
 # ── Logging ───────────────────────────────────────────────────────────────────
