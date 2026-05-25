@@ -8,6 +8,8 @@ services:
     image: calmdriver-web:latest
     container_name: calmdriver-web
     restart: unless-stopped
+    volumes:
+      - /opt/calmdriver/app:/usr/share/nginx/html:ro
     ports:
       - "127.0.0.1:8081:80"
     depends_on:
