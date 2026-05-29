@@ -756,6 +756,25 @@
         radial-gradient(ellipse 60% 50% at 50% 50%, rgba(245,197,24,0.04) 0%, transparent 70%);
     }
 
+    .fleet-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2.5rem auto 0;
+      max-width: 960px;
+    }
+    .fleet-gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    @media (max-width: 600px) {
+      .fleet-gallery { grid-template-columns: 1fr; }
+      .fleet-gallery img { height: 180px; }
+    }
+
     .rental-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -1765,6 +1784,12 @@
       <p data-lang-pl>W pełni zwrotna kaucja pobierana przy odbiorze auta. Zwrot następuje przy zakończeniu współpracy.</p>
       <p data-lang-en>Fully refundable deposit collected when picking up the car. Returned when cooperation ends.</p>
     </div>
+  </div>
+
+  <div class="fleet-gallery reveal">
+    <img src="/img/flota-dacia-sandero.jpg" alt="Dacia Sandero z floty CalmDriver Taxi Bialystok" loading="lazy" width="900" height="1600" />
+    <img src="/img/flota-kia-venga.jpg" alt="Kia Venga z floty CalmDriver - auto do pracy Bolt Uber Bialystok" loading="lazy" width="1200" height="541" />
+    <img src="/img/flota-skoda-fabia.jpg" alt="Skoda Fabia z floty CalmDriver - wynajem auta taxi Bialystok" loading="lazy" width="1200" height="541" />
   </div>
 
   <div class="rental-features reveal">
