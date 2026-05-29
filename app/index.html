@@ -2387,31 +2387,44 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://calmdriver.pl/#business",
   "name": "CalmDriver Taxi",
   "url": "https://calmdriver.pl",
   "telephone": "+48739980388",
   "email": "calmdrivertaxi@gmail.com",
+  "image": "https://calmdriver.pl/og-image.jpg",
+  "priceRange": "550-1100 PLN/tydzien",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Białystok",
     "addressLocality": "Białystok",
+    "postalCode": "15-001",
+    "addressRegion": "podlaskie",
     "addressCountry": "PL"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 53.1325,
+    "longitude": 23.1688
+  },
   "description": "Praca kierowcy na platformach Bolt, Uber i FreeNow w Białymstoku. Wynajem aut z floty CalmDriver.",
-  "areaServed": "Białystok",
+  "areaServed": {
+    "@type": "City",
+    "name": "Białystok",
+    "sameAs": "https://pl.wikipedia.org/wiki/Bia%C5%82ystok"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+48739980388",
     "contactType": "customer service",
     "availableLanguage": ["Polish", "English"]
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "CalmDriver Taxi",
-  "url": "https://calmdriver.pl",
+  },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
