@@ -128,37 +128,48 @@ async function generateArticle(existingArticles, targetKeyword = null) {
     ? `FRAZA KLUCZOWA: "${targetKeyword}"\nNapisz artykuł odpowiadający na intencję tej frazy. Wpleć ją w tytuł i treść naturalnie (max 3-4 razy). Jeśli fraza zawiera rok lub go sugeruje – użyj ${currentYear}.`
     : `TEMAT: Wybierz unikalny temat związany z pracą kierowcy na platformach Bolt/Uber/FreeNow w Białymstoku, którego jeszcze nie ma na liście powyżej.`;
 
-  const prompt = `Jesteś ekspertem od pracy kierowcy na platformach Bolt, Uber i FreeNow w Białymstoku. Piszesz dla firmy CalmDriver Taxi – fleet partnera pomagającego kierowcom zacząć zarabiać w Białymstoku. Piszesz szczerze i konkretnie dla potencjalnych kierowców.
+  const prompt = `Jesteś doświadczonym kierowcą i ekspertem od pracy na platformach Bolt, Uber i FreeNow w Białymstoku. Piszesz poradnik dla ludzi, którzy rozważają tę pracę lub dopiero zaczynają. Twój cel: dać czytelnikowi REALNĄ WARTOŚĆ — odpowiedzieć na jego pytanie lepiej niż jakikolwiek inny artykuł w internecie.
 
 ISTNIEJĄCE ARTYKUŁY – NIE POWTARZAJ TEMATÓW:
 ${existingList}
 
 ${keywordSection}
 
+NAJWAŻNIEJSZA ZASADA — WARTOŚĆ DLA CZYTELNIKA:
+- Pisz artykuł, który jest NAPRAWDĘ pomocny — tak jakbyś doradzał kumplowi
+- 90% treści to praktyczna wiedza, porady, dane, doświadczenie
+- CalmDriver Taxi (fleet partner w Białymstoku) możesz wspomnieć MAX 1-2 razy i tylko tam, gdzie to naturalnie pasuje (np. jako opcja wynajmu auta). NIE promuj CalmDriver w każdym akapicie
+- NIE pisz w pierwszej osobie liczby mnogiej ("W CalmDriver widzimy"). Pisz w drugiej osobie — zwracaj się do czytelnika: "Jeśli planujesz...", "Warto wiedzieć, że...", "Sprawdź..."
+- Zakończ artykuł praktyczną radą lub podsumowaniem, NIE reklamą
+
 GŁOS I STYL:
-- Pierwsza osoba liczby mnogiej: "W CalmDriver widzimy...", "Nasi kierowcy zarabiają...", "Regularnie pomagamy..."
-- Szczerość: mów co jest trudne, ile naprawdę można zarobić, gdzie są pułapki
-- Każde zdanie niesie konkretną informację – zero wypełniaczy
-- Nie używaj: "kompleksowo", "profesjonalnie", "najwyższa jakość", "niezwykle ważny"
+- Konkretny, rzeczowy, bez lania wody
+- Szczerość: mów co jest trudne, gdzie są pułapki, czego nikt nie mówi
+- Każde zdanie niesie informację — zero wypełniaczy i ogólników
+- Nie używaj: "kompleksowo", "profesjonalnie", "najwyższa jakość", "niezwykle ważny", "od podszewki"
+- Unikaj powtarzalnej struktury — zaskocz czytelnika ciekawym wstępem, nietypowym ujęciem tematu
+- Dodaj konkretne przykłady, scenariusze, obliczenia, porównania
 
-OBOWIĄZKOWE ELEMENTY LOKALNE (wpleć 2-3 naturalnie):
-- Białostockie realia: centrum, Galeria Biała, Alfacenter, dworzec PKP, lotnisko Krywlany
-- Białostockie osiedla: Piasta, Antoniuk, Słoneczny Stok, Bojary, Nowe Miasto, Skorupy
-- Białostocki rynek pracy i specyfika – miasto studenckie, UwB, PB
+ELEMENTY LOKALNE (wpleć 2-3 naturalnie, NIE wszystkie na raz):
+- Białystok: centrum (Lipowa, Sienkiewicza), Galeria Biała, Alfacenter, dworzec PKP, lotnisko Krywlany
+- Osiedla: Piasta, Antoniuk, Słoneczny Stok, Bojary, Nowe Miasto, Skorupy
+- Specyfika: miasto studenckie (UwB, Politechnika), mniejszy rynek niż Warszawa ale mniej konkurencji
 
-KONKRETNE DANE:
-- Zarobki kierowcy w Białymstoku ${currentYear}: 18-28 zł/h netto na start, 25-38 zł/h dla doświadczonych
-- Wynajem auta w CalmDriver: 700 zł/tydzień standard, 550 zł/tydzień dla studentów
+DANE (użyj gdzie pasują, NIE wciskaj wszystkich):
+- Zarobki: 18-28 zł/h netto na start, 25-38 zł/h dla doświadczonych (${currentYear})
 - Platformy: Bolt (dominujący w Białymstoku), Uber, FreeNow
-- Rejestracja na platformach: 1-2 dni robocze z pomocą CalmDriver
+- Prowizja platform: Bolt ~25%, Uber ~25%, FreeNow ~15-20%
+- Koszty paliwa: ~1,5-2 zł/km przy jeździe w mieście
+- Rejestracja: 1-2 dni robocze z fleet partnerem, samodzielnie 1-2 tygodnie
 
-STRUKTURA ARTYKUŁU:
-- Wstęp (2-3 zdania): konkretna sytuacja którą czytelnik rozpozna
-- 4-5 sekcji H2 z praktyczną wiedzą
-- Listy punktowane z **pogrubionymi kluczowymi danymi**
-- Zakończenie z CTA: "Zadzwoń do CalmDriver: 739 980 388 lub napisz na calmdrivertaxi@gmail.com"
+STRUKTURA:
+- Wstęp (2-3 zdania): konkretna sytuacja, pytanie lub problem czytelnika
+- 4-6 sekcji H2 — każda odpowiada na osobne podpytanie
+- Mieszaj formaty: akapity, listy punktowane, porównania, przykłady liczbowe
+- NIE kończ każdej sekcji odniesieniem do CalmDriver
+- Jeśli temat tego wymaga, dodaj link do /faq/ w treści (jako <a href="/faq/">FAQ</a>)
 
-DŁUGOŚĆ: 800-1100 słów
+DŁUGOŚĆ: 900-1300 słów
 
 ZWRÓĆ WYŁĄCZNIE JSON (bez markdown, bez tekstu przed/po):
 {
@@ -167,7 +178,7 @@ ZWRÓĆ WYŁĄCZNIE JSON (bez markdown, bez tekstu przed/po):
   "category": "...",
   "readTime": "X min",
   "date": "${today}",
-  "body": "...pełny HTML artykułu (tylko tagi h2, p, ul, li, strong, a — bez html/head/body)..."
+  "body": "...pełny HTML artykułu (tylko tagi h2, p, ul, li, ol, strong, a — bez html/head/body)..."
 }
 
 Kategoria musi być JEDNĄ z: Zarobki | Platformy | Wynajem | Porady | Prawo i podatki`;
@@ -224,10 +235,24 @@ function parseGeneratedArticle(raw) {
 
 // ── Article HTML Builder ──────────────────────────────────────────────────────
 
-function buildArticleHTML(article, slug) {
+function buildRelatedLinks(currentSlug, existingArticles) {
+  const others = existingArticles
+    .filter(a => a.slug !== currentSlug)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 2);
+
+  const links = others.map(a =>
+    `<a href="/blog/${a.slug}.html">${a.title}</a>`
+  );
+  links.push('<a href="/faq/">FAQ — Najczęściej zadawane pytania</a>');
+  return links.join('\n      ');
+}
+
+function buildArticleHTML(article, slug, existingArticles = []) {
   const { title, excerpt, category, readTime, date, body } = article;
   const formattedDate = formatDate(date);
   const canonicalUrl = `https://calmdriver.pl/blog/${slug}.html`;
+  const relatedLinks = buildRelatedLinks(slug, existingArticles);
 
   return `<!DOCTYPE html>
 <html lang="pl">
@@ -338,6 +363,26 @@ function buildArticleHTML(article, slug) {
     .article-body a { color: var(--gold); text-decoration: none; font-weight: 500; }
     .article-body a:hover { text-decoration: underline; }
 
+    .related-posts {
+      margin-top: 50px; padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .related-posts h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; color: var(--muted2);
+    }
+    .related-posts-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .related-posts-grid a {
+      display: block; padding: 16px 20px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 600;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .related-posts-grid a:hover { border-color: var(--gold); transform: translateY(-2px); }
+    @media (max-width: 600px) { .related-posts-grid { grid-template-columns: 1fr; } }
+
     .article-cta {
       margin-top: 60px; padding: 36px;
       background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
@@ -405,6 +450,13 @@ function buildArticleHTML(article, slug) {
     ${body}
   </div>
 
+  <div class="related-posts">
+    <h3>Przeczytaj też:</h3>
+    <div class="related-posts-grid">
+      ${relatedLinks}
+    </div>
+  </div>
+
   <div class="article-cta">
     <h3>Gotowy żeby <span>zacząć zarabiać?</span></h3>
     <p>Skontaktuj się z CalmDriver — pomożemy Ci przejść rejestrację i ruszyć z pierwszymi zleceniami w Białymstoku.</p>
@@ -417,7 +469,7 @@ function buildArticleHTML(article, slug) {
     <div class="footer-logo-icon">🚕</div>
     <div class="footer-logo-text">Calm<span>Driver</span> Taxi</div>
   </a>
-  <div class="footer-copy">© 2025 CalmDriver Taxi · Białystok</div>
+  <div class="footer-copy">© 2026 CalmDriver Taxi · Białystok</div>
   <div class="footer-links">
     <a href="/blog/">Blog</a>
     <a href="/">Strona główna</a>
@@ -541,7 +593,7 @@ async function main() {
   }
 
   // Write article HTML
-  const articleHTML = buildArticleHTML(article, slug);
+  const articleHTML = buildArticleHTML(article, slug, index.articles);
   fs.writeFileSync(articlePath, articleHTML, 'utf-8');
   console.log(`✅ Artykuł zapisany: app/blog/${slug}.html`);
   console.log(`   Tytuł:    ${article.title}`);
