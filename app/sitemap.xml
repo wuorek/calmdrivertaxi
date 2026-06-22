@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://calmdriver.pl/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://calmdriver.pl/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://calmdriver.pl/" />
     <changefreq>monthly</changefreq>
@@ -11,15 +11,21 @@
   </url>
   <url>
     <loc>https://calmdriver.pl/faq/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/blog/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calmdriver.pl/blog/ubezpieczenie-auta-do-taksowki-w-bialymstoku-2026-kompletny-przewodnik.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/blog/bialystok-2026-ile-godzin-warto-pracowac-jako-kierowca-uber-bolt-i-fre.html</loc>
