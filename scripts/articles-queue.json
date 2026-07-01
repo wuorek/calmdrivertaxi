@@ -64,7 +64,8 @@
     {
       "keyword": "praca kierowcy Bolt wymagania dokumenty",
       "priority": 11,
-      "status": "pending"
+      "status": "done",
+      "published_date": "2026-07-01"
     },
     {
       "keyword": "czy warto pracować jako kierowca Uber opinia",
