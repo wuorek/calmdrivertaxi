@@ -46,7 +46,8 @@
     {
       "keyword": "ile godzin pracuje kierowca Uber dziennie",
       "priority": 8,
-      "status": "pending"
+      "status": "done",
+      "published_date": "2026-07-17"
     },
     {
       "keyword": "praca kierowcy taxi dla studenta Białystok",
