@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://calmdriver.pl/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://calmdriver.pl/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://calmdriver.pl/" />
     <changefreq>monthly</changefreq>
@@ -11,15 +11,21 @@
   </url>
   <url>
     <loc>https://calmdriver.pl/faq/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/blog/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calmdriver.pl/blog/pory-roku-za-kierownica-jak-pogoda-w-bialymstoku-ksztaltuje-prace-kier.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/blog/nie-tylko-kilometry-jak-budowac-reputacje-i-unikac-spadku-ocen-jako-ki.html</loc>
