@@ -58,7 +58,8 @@
     {
       "keyword": "czy kierowca Bolt dostaje urlop",
       "priority": 10,
-      "status": "pending"
+      "status": "done",
+      "published_date": "2026-07-31"
     }
   ]
 }
