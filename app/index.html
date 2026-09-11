@@ -1101,6 +1101,23 @@
     }
     .footer-links a:hover { color: var(--gold); }
 
+    /* ─── FORMULARZ: zwijane pola opcjonalne ─── */
+    .form-more { margin-bottom: 18px; }
+    .form-more > summary {
+      cursor: pointer;
+      list-style: none;
+      color: var(--muted2);
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-more > summary::-webkit-details-marker { display: none; }
+    .form-more > summary::before { content: '+ '; color: var(--gold); }
+    .form-more[open] > summary::before { content: '− '; }
+    .form-more > summary:hover { color: var(--gold); }
+    .form-more > div { margin-top: 16px; }
+
     /* ─── FLOATING PHONE BTN ─── */
     .phone-float {
       position: fixed; bottom: 30px; right: 30px;
@@ -1125,6 +1142,11 @@
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-6px); }
+    }
+    .phone-float .wa-float {
+      background: #25d366;
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+      animation: none;
     }
     .phone-float-label {
       background: var(--card);
@@ -1348,6 +1370,7 @@
 
 <!-- FLOATING PHONE BUTTON -->
 <div class="phone-float">
+  <a href="https://wa.me/48739980388" class="wa-float" rel="noopener" aria-label="Napisz na WhatsApp">💬</a>
   <a href="tel:+48739980388" aria-label="Zadzwoń">📞</a>
   <div class="phone-float-label">739 980 388</div>
 </div>
@@ -1691,6 +1714,11 @@
           <div class="calc-result-label" data-lang-en>Net rate / hour</div>
           <div class="calc-result-val" id="hourly-rate">32 zł</div>
         </div>
+        <div class="calc-result-row" id="fee-row">
+          <div class="calc-result-label" data-lang-pl>Opłata CalmDriver / tydzień</div>
+          <div class="calc-result-label" data-lang-en>CalmDriver fee / week</div>
+          <div class="calc-result-val" style="color:#ff8080">−40 zł</div>
+        </div>
         <div class="calc-result-row" id="rental-cost-row" style="display:none">
           <div class="calc-result-label" data-lang-pl>Koszt wynajmu / tydzień</div>
           <div class="calc-result-label" data-lang-en>Rental cost / week</div>
@@ -1709,10 +1737,10 @@
       </div>
 
       <p class="calc-note" data-lang-pl>
-        * Szacunki dla Białegostoku. Stawka netto po odliczeniu prowizji platformy (~25%) i kosztów paliwa. Wynajem: 375 zł/tydz. (standard). Rzeczywiste zarobki mogą się różnić.
+        * Szacunki dla Białegostoku. Stawka netto po odliczeniu prowizji platformy (~25%) i kosztów paliwa. Wynajem: 375 zł/tydz. (standard). Przy własnym aucie odliczona opłata CalmDriver 40 zł/tydz. — prowizji od obrotu nie pobieramy. Rzeczywiste zarobki mogą się różnić.
       </p>
       <p class="calc-note" data-lang-en>
-        * Estimates for Białystok. Net rate after platform commission (~25%) and fuel costs. Rental: 375 PLN/week (standard). Actual earnings may vary.
+        * Estimates for Białystok. Net rate after platform commission (~25%) and fuel costs. Rental: 375 PLN/week (standard). For own car, the 40 PLN/week CalmDriver fee is deducted — we charge no commission on turnover. Actual earnings may vary.
       </p>
     </div>
 
@@ -1745,6 +1773,88 @@
         <p data-lang-pl>Pierwszy tydzień wynajmu tylko <strong style="color:var(--gold)">250 zł</strong> zamiast 350–400 zł. Sprawdź czy praca z nami jest dla Ciebie!</p>
         <p data-lang-en>First week of rental only <strong style="color:var(--gold)">250 PLN</strong> instead of 350–400 PLN. Check if working with us is right for you!</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ TERMS / WARUNKI ROZLICZENIA ═══ -->
+<section id="terms">
+  <div class="section-label" data-lang-pl>Warunki współpracy</div>
+  <div class="section-label" data-lang-en>Terms of cooperation</div>
+  <h2 data-lang-pl>Ile <span class="accent">na nas wydasz</span></h2>
+  <h2 data-lang-en>What <span class="accent">we charge</span></h2>
+  <p class="section-subtitle" data-lang-pl>Większość partnerów flotowych bierze 5–10% Twojego obrotu. My nie bierzemy nic. To jest pełna lista opłat — nie ma dopisków drobnym drukiem.</p>
+  <p class="section-subtitle" data-lang-en>Most fleet partners take 5–10% of your turnover. We take none. This is the full list of fees — no fine print.</p>
+
+  <div style="max-width:920px;margin:40px auto 0;display:grid;gap:20px;grid-template-columns:1fr">
+    <div style="background:var(--card2);border:1px solid rgba(245,197,24,0.35);border-radius:var(--radius-lg);padding:26px 24px">
+      <div style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">
+        <span data-lang-pl>Jeździsz własnym autem</span><span data-lang-en>You drive your own car</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;min-width:420px;border-collapse:collapse;font-size:0.95rem">
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 14px 12px 0;color:var(--text);font-weight:600"><span data-lang-pl>Obsługa rozliczeń</span><span data-lang-en>Settlement handling</span></td>
+              <td style="padding:12px 0;color:var(--gold);font-weight:800;white-space:nowrap;text-align:right">40 zł / <span data-lang-pl>tydz.</span><span data-lang-en>week</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 14px 12px 0;color:var(--text);font-weight:600"><span data-lang-pl>Prowizja od Twojego obrotu</span><span data-lang-en>Commission on your turnover</span></td>
+              <td style="padding:12px 0;color:var(--green2);font-weight:800;white-space:nowrap;text-align:right">0%</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 14px 12px 0;color:var(--text);font-weight:600"><span data-lang-pl>Opłata za rejestrację na platformach</span><span data-lang-en>Platform registration fee</span></td>
+              <td style="padding:12px 0;color:var(--green2);font-weight:800;white-space:nowrap;text-align:right">0 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 14px 12px 0;color:var(--text);font-weight:600"><span data-lang-pl>VAT 8% od obrotu</span><span data-lang-en>8% VAT on turnover</span></td>
+              <td style="padding:12px 0;color:var(--muted2);white-space:nowrap;text-align:right"><span data-lang-pl>podatek</span><span data-lang-en>tax</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:16px 0 0;font-size:0.85rem;color:var(--muted);line-height:1.6">
+        <span data-lang-pl>VAT to ustawowy podatek odprowadzany do urzędu skarbowego — <strong style="color:var(--text)">nie jest naszą prowizją</strong>. Pomniejszasz go o VAT z faktur za paliwo i serwis.</span>
+        <span data-lang-en>VAT is a statutory tax paid to the tax office — <strong style="color:var(--text)">not our commission</strong>. You offset it with VAT from fuel and service invoices.</span>
+      </p>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:26px 24px">
+      <div style="font-size:0.72rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:14px">
+        <span data-lang-pl>Wynajmujesz auto od nas</span><span data-lang-en>You rent a car from us</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;min-width:420px;border-collapse:collapse;font-size:0.95rem">
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 14px 12px 0;color:var(--text);font-weight:600"><span data-lang-pl>Pierwszy tydzień</span><span data-lang-en>First week</span></td>
+              <td style="padding:12px 0;color:var(--gold);font-weight:800;white-space:nowrap;text-align:right">250 zł</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 14px 12px 0;color:var(--text);font-weight:600"><span data-lang-pl>Wynajem standardowy</span><span data-lang-en>Standard rental</span></td>
+              <td style="padding:12px 0;color:var(--gold);font-weight:800;white-space:nowrap;text-align:right">350–400 zł / <span data-lang-pl>tydz.</span><span data-lang-en>week</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 14px 12px 0;color:var(--text);font-weight:600"><span data-lang-pl>Kaucja (zwrotna)</span><span data-lang-en>Deposit (refundable)</span></td>
+              <td style="padding:12px 0;color:var(--gold);font-weight:800;white-space:nowrap;text-align:right">500 zł</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 14px 12px 0;color:var(--text);font-weight:600"><span data-lang-pl>OC/AC, serwis, przeglądy</span><span data-lang-en>Insurance, service, inspections</span></td>
+              <td style="padding:12px 0;color:var(--green2);font-weight:800;white-space:nowrap;text-align:right">0 zł</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 14px 12px 0;color:var(--text);font-weight:600"><span data-lang-pl>Prowizja od Twojego obrotu</span><span data-lang-en>Commission on your turnover</span></td>
+              <td style="padding:12px 0;color:var(--green2);font-weight:800;white-space:nowrap;text-align:right">0%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:16px 0 0;font-size:0.85rem;color:var(--muted);line-height:1.6">
+        <span data-lang-pl>Nie musisz zakładać działalności — możesz jeździć na umowie zlecenie, na naszej licencji. <a href="/wynajem-auta-pod-taxi-bialystok/" style="color:var(--gold)">Pełne warunki wynajmu →</a></span>
+        <span data-lang-en>No business registration needed — you can work on a contract, under our licence. <a href="/wynajem-auta-pod-taxi-bialystok/" style="color:var(--gold)">Full rental terms →</a></span>
+      </p>
     </div>
   </div>
 </section>
@@ -1958,8 +2068,8 @@
       <div class="testimonial-stars">
         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
       </div>
-      <p class="testimonial-text" data-lang-pl>Jestem studentem PB i szukałem elastycznej pracy. <strong>Wynająłem auto z floty za 550 zł</strong> i już w pierwszym tygodniu wyszedłem na plus. Mogę pracować tylko w weekendy i nadal się opłaca.</p>
-      <p class="testimonial-text" data-lang-en>I'm a student at PB and was looking for flexible work. <strong>I rented a fleet car for 550 PLN</strong> and was already profitable in the first week. I can work only on weekends and it still pays off.</p>
+      <p class="testimonial-text" data-lang-pl>Jestem studentem PB i szukałem elastycznej pracy. <strong>Wynająłem auto z floty za 250 zł za pierwszy tydzień</strong> i już w pierwszym tygodniu wyszedłem na plus. Mogę pracować tylko w weekendy i nadal się opłaca.</p>
+      <p class="testimonial-text" data-lang-en>I'm a student at PB and was looking for flexible work. <strong>I rented a fleet car for 250 PLN for the first week</strong> and was already profitable in the first week. I can work only on weekends and it still pays off.</p>
       <div class="testimonial-author">
         <div class="testimonial-avatar">👨‍🎓</div>
         <div>
@@ -2121,16 +2231,18 @@
             <input type="tel" name="phone" placeholder="739 000 000" required />
           </div>
         </div>
+        <details class="form-more">
+          <summary><span data-lang-pl>Dodaj szczegóły (opcjonalnie)</span><span data-lang-en>Add details (optional)</span></summary>
         <div class="form-field">
           <label>Email</label>
           <input type="email" name="email" placeholder="jan@email.com" />
         </div>
         <div class="form-field">
-          <label data-lang-pl>Interesuje mnie *</label>
-          <label data-lang-en>I'm interested in *</label>
-          <select name="interest" required>
-            <option value="" data-lang-pl>— Wybierz opcję —</option>
-            <option value="" data-lang-en>— Choose option —</option>
+          <label data-lang-pl>Interesuje mnie</label>
+          <label data-lang-en>I'm interested in</label>
+          <select name="interest">
+            <option value="info" data-lang-pl>— Wybierz opcję —</option>
+            <option value="info" data-lang-en>— Choose option —</option>
             <option value="own-car" data-lang-pl>Praca z własnym autem</option>
             <option value="own-car" data-lang-en>Work with own car</option>
             <option value="rental" data-lang-pl>Wynajem auta z floty</option>
@@ -2147,6 +2259,7 @@
           <textarea name="message" data-lang-pl placeholder="Napisz coś o sobie — np. czy masz prawo jazdy, czy masz auto..."></textarea>
           <textarea name="message" data-lang-en placeholder="Tell us a bit about yourself — e.g. driving license, own car..."></textarea>
         </div>
+        </details>
         <button type="submit" class="form-submit" id="form-submit-btn">
           <span id="form-btn-text" data-lang-pl>Wyślij wiadomość ✈</span>
           <span id="form-btn-text" data-lang-en>Send message ✈</span>
@@ -2170,6 +2283,11 @@
     <a href="mailto:calmdrivertaxi@gmail.com">Email</a>
     <a href="#contact" data-lang-pl>Kontakt</a>
     <a href="#contact" data-lang-en>Contact</a>
+    <a href="/praca-kierowca-bolt-bialystok/">Praca w Bolt</a>
+    <a href="/praca-kierowca-uber-bialystok/">Praca w Uber</a>
+    <a href="/praca-kierowca-freenow-bialystok/">Praca we FreeNow</a>
+    <a href="/wynajem-auta-pod-taxi-bialystok/">Wynajem auta</a>
+    <a href="/taxi-bialystok/">Taxi Białystok</a>
     <a href="/blog/" data-lang-pl>Blog</a>
     <a href="/blog/" data-lang-en>Blog</a>
   </div>
@@ -2299,6 +2417,7 @@
     let calcMode = 'own';
     const RATE = 32;
     const RENTAL_COST = 375;
+    const FLEET_FEE = 40; // obsluga rozliczen przy wlasnym aucie, 0% prowizji
 
     function fmt(n) {
       return new Intl.NumberFormat('pl-PL').format(Math.round(n)) + ' zł';
@@ -2313,8 +2432,8 @@
 
       let weekly, hourly;
       if (calcMode === 'own') {
-        weekly = hours * RATE;
-        hourly = RATE;
+        weekly = Math.max(0, hours * RATE - FLEET_FEE);
+        hourly = hours > 0 ? weekly / hours : 0;
       } else {
         weekly = Math.max(0, hours * RATE - RENTAL_COST);
         hourly = hours > 0 ? weekly / hours : 0;
@@ -2330,6 +2449,7 @@
       document.getElementById('btn-own').classList.toggle('active', mode === 'own');
       document.getElementById('btn-rental').classList.toggle('active', mode === 'rental');
       document.getElementById('rental-cost-row').style.display = mode === 'rental' ? 'flex' : 'none';
+      document.getElementById('fee-row').style.display = mode === 'own' ? 'flex' : 'none';
       updateCalc();
     }
 
@@ -2494,44 +2614,7 @@
     "telephone": "+48739980388",
     "contactType": "customer service",
     "availableLanguage": ["Polish", "English"]
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "40"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Marcin K." },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Zacząłem pracę z CalmDriver 3 miesiące temu i nie żałuję. W pierwszym miesiącu zarobiłem ponad 5 200 zł netto pracując 35-40 godzin tygodniowo. Rejestracja przez nich trwała dosłownie 2 dni.",
-      "datePublished": "2026-02-15"
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Piotr W." },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Jestem studentem PB i szukałem elastycznej pracy. Wynająłem auto z floty za 550 zł i już w pierwszym tygodniu wyszedłem na plus. Mogę pracować tylko w weekendy i nadal się opłaca.",
-      "datePublished": "2026-03-10"
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Tomasz R." },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Pracowałem wcześniej na etacie i bałem się zmienić. CalmDriver przeprowadził mnie przez wszystko krok po kroku. Teraz zarabiam 2x więcej przy 3x większej elastyczności.",
-      "datePublished": "2025-09-22"
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Oleksiy M." },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "Przyjechałem do Białegostoku z Ukrainy i nie wiedziałem jak zacząć. Ekipa CalmDriver pomogła mi z dokumentami i rejestracją. Po tygodniu miałem już pierwsze zlecenia.",
-      "datePublished": "2025-12-05"
-    }
-  ]
+  }
 }
 </script>
 </body>

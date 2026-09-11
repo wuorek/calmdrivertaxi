@@ -126,7 +126,13 @@ async function generateArticle(existingArticles, targetKeyword = null) {
 
   const keywordSection = targetKeyword
     ? `FRAZA KLUCZOWA: "${targetKeyword}"\nNapisz artykuł odpowiadający na intencję tej frazy. Wpleć ją w tytuł i treść naturalnie (max 3-4 razy). Jeśli fraza zawiera rok lub go sugeruje – użyj ${currentYear}.`
-    : `TEMAT: Wybierz unikalny temat związany z pracą kierowcy na platformach Bolt/Uber/FreeNow w Białymstoku, którego jeszcze nie ma na liście powyżej.`;
+    : `TEMAT: Wybierz temat, ktory odpowiada na KONKRETNE PYTANIE zadawane w wyszukiwarce przez osobe rozwazajaca prace kierowcy w Bialymstoku — takie, ktore ktos faktycznie wpisuje w Google.
+
+ZASADY DOBORU TEMATU (obowiazkowe):
+- Temat MUSI zawierac fraze lokalna ("Bialystok") albo nazwe platformy (Bolt / Uber / FreeNow).
+- Temat MUSI dotyczyc jednej z kategorii: zarobki i koszty, wymagania i dokumenty, licencja, rejestracja, wynajem auta, podatki i forma rozliczenia, praca dla obcokrajowcow, praca dorywcza/studencka.
+- ZAKAZANE sa tematy ogolnoporadnikowe bez intencji wyszukiwania, np. o obsludze pasazera, motywacji, zarzadzaniu pieniedzmi, porach roku, wyposazeniu auta, budowaniu reputacji. Takie artykuly nie odpowiadaja na zadne realne zapytanie i nie generuja ruchu.
+- Tytul ma brzmiec jak odpowiedz na pytanie, a nie jak esej.`;
 
   const prompt = `Jesteś doświadczonym kierowcą i ekspertem od pracy na platformach Bolt, Uber i FreeNow w Białymstoku. Piszesz poradnik dla ludzi, którzy rozważają tę pracę lub dopiero zaczynają. Twój cel: dać czytelnikowi REALNĄ WARTOŚĆ — odpowiedzieć na jego pytanie lepiej niż jakikolwiek inny artykuł w internecie.
 

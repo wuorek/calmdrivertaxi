@@ -2,7 +2,9 @@
 /**
  * CalmDriver – GSC Keyword Agent
  * Pobiera frazy z Google Search Console i uzupełnia articles-queue.json
- * oraz faq-queue.json o nowe okazje (impressions > 20, pozycja 6-30).
+ * oraz faq-queue.json o nowe okazje (impressions > 5, pozycja 5-60).
+ * Prog poszerzony 12.09.2026: frazy rekrutacyjne ("bolt bialystok praca" itp.)
+ * siedza na pozycjach 31-75 i wypadaly poza stary filtr 6-30.
  *
  * JEDNORAZOWA KONFIGURACJA:
  * 1. Wejdź na https://console.cloud.google.com/
@@ -123,9 +125,9 @@ async function fetchSearchConsoleData(token) {
 function findOpportunities(rows) {
   return rows
     .filter(row =>
-      row.impressions > 20 &&
-      row.position >= 6 &&
-      row.position <= 30
+      row.impressions > 5 &&
+      row.position >= 5 &&
+      row.position <= 60
     )
     .sort((a, b) => (b.impressions / b.position) - (a.impressions / a.position))
     .slice(0, 40)
@@ -149,7 +151,7 @@ function updateQueue(queuePath, opportunities) {
     const kw = opp.keyword.toLowerCase();
     if (existingKeywords.has(kw)) continue;
 
-    const priority = opp.position <= 10 ? 1 : opp.position <= 20 ? 2 : 3;
+    const priority = opp.position <= 15 ? 1 : opp.position <= 35 ? 2 : 3;
 
     queue.queue.push({
       keyword: opp.keyword,

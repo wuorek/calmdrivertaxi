@@ -1,5 +1,5 @@
 {
-  "_info": "Kolejka słów kluczowych dla bloga calmdriver.pl. Status: pending = do napisania, done = opublikowane, skipped = pominięte. Priority: 1=najważniejsze.",
+  "_info": "Kolejka slow kluczowych dla bloga calmdriver.pl. Status: pending = do napisania, done = opublikowane, skipped = pominiete. Priority: 1=najwazniejsze. Tematy maja pochodzic z realnych zapytan (Search Console lub lista fraz rekrutacyjnych) — nie z ogolnych pomyslow. Uzupelnia je scripts/gsc-keyword-agent.mjs.",
   "queue": [
     {
       "keyword": "ile zarabia kierowca Bolt Białystok 2026",
@@ -72,6 +72,91 @@
       "priority": 12,
       "status": "done",
       "published_date": "2026-07-03"
+    },
+    {
+      "keyword": "bolt bialystok praca wymagania",
+      "priority": 1,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "21 wysw., poz. 44,0"
+    },
+    {
+      "keyword": "kierowca bolt bialystok ile zarabia 2026",
+      "priority": 1,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "26 wysw., poz. 31,5"
+    },
+    {
+      "keyword": "bolt zarobki 2026 ile zostaje na reke",
+      "priority": 1,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "23 wysw., poz. 39,4"
+    },
+    {
+      "keyword": "licencja taxi Bialystok jak uzyskac krok po kroku",
+      "priority": 1,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "luka: brak artykulu, FAQ ma tylko skrot"
+    },
+    {
+      "keyword": "praca kierowca bolt bez wlasnej firmy umowa zlecenie",
+      "priority": 1,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "wyroznik oferty, brak tresci"
+    },
+    {
+      "keyword": "wynajem auta pod taxi Bialystok cennik",
+      "priority": 1,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "3 puste auta — priorytet biznesowy"
+    },
+    {
+      "keyword": "praca kierowca taxi Bialystok dla obcokrajowca dokumenty",
+      "priority": 2,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "czesc kierowcow to obcokrajowcy"
+    },
+    {
+      "keyword": "ile mozna zarobic na bolcie w weekend",
+      "priority": 2,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "poz. 53,0 i 55,5 na pokrewnych frazach"
+    },
+    {
+      "keyword": "wymagania auta do bolt uber Bialystok rocznik",
+      "priority": 2,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "czeste pytanie w FAQ"
+    },
+    {
+      "keyword": "praca kierowca uber Bialystok zarobki 2026",
+      "priority": 2,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "36 wysw. na 'uber'"
+    },
+    {
+      "keyword": "podatki kierowcy bolt ryczalt 8 procent Bialystok",
+      "priority": 3,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "domyka temat rozliczen"
+    },
+    {
+      "keyword": "praca dorywcza kierowca Bialystok weekendy",
+      "priority": 3,
+      "status": "pending",
+      "source": "GSC 2026-09-12",
+      "note": "segment student/dorabianie"
     }
-  ]
+  ],
+  "_last_manual_update": "2026-09-12"
 }
