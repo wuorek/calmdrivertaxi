@@ -76,9 +76,10 @@
     {
       "keyword": "bolt bialystok praca wymagania",
       "priority": 1,
-      "status": "pending",
+      "status": "done",
       "source": "GSC 2026-09-12",
-      "note": "21 wysw., poz. 44,0"
+      "note": "21 wysw., poz. 44,0",
+      "published_date": "2026-10-05"
     },
     {
       "keyword": "kierowca bolt bialystok ile zarabia 2026",
