@@ -84,9 +84,10 @@
     {
       "keyword": "kierowca bolt bialystok ile zarabia 2026",
       "priority": 1,
-      "status": "pending",
+      "status": "done",
       "source": "GSC 2026-09-12",
-      "note": "26 wysw., poz. 31,5"
+      "note": "26 wysw., poz. 31,5",
+      "published_date": "2026-10-07"
     },
     {
       "keyword": "bolt zarobki 2026 ile zostaje na reke",
