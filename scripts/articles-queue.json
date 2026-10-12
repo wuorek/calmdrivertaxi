@@ -92,9 +92,10 @@
     {
       "keyword": "bolt zarobki 2026 ile zostaje na reke",
       "priority": 1,
-      "status": "pending",
+      "status": "done",
       "source": "GSC 2026-09-12",
-      "note": "23 wysw., poz. 39,4"
+      "note": "23 wysw., poz. 39,4",
+      "published_date": "2026-10-12"
     },
     {
       "keyword": "licencja taxi Bialystok jak uzyskac krok po kroku",
