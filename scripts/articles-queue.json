@@ -100,9 +100,10 @@
     {
       "keyword": "licencja taxi Bialystok jak uzyskac krok po kroku",
       "priority": 1,
-      "status": "pending",
+      "status": "done",
       "source": "GSC 2026-09-12",
-      "note": "luka: brak artykulu, FAQ ma tylko skrot"
+      "note": "luka: brak artykulu, FAQ ma tylko skrot",
+      "published_date": "2026-10-16"
     },
     {
       "keyword": "praca kierowca bolt bez wlasnej firmy umowa zlecenie",
