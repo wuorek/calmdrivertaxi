@@ -116,9 +116,10 @@
     {
       "keyword": "wynajem auta pod taxi Bialystok cennik",
       "priority": 1,
-      "status": "pending",
+      "status": "done",
       "source": "GSC 2026-09-12",
-      "note": "3 puste auta — priorytet biznesowy"
+      "note": "3 puste auta — priorytet biznesowy",
+      "published_date": "2026-10-23"
     },
     {
       "keyword": "praca kierowca taxi Bialystok dla obcokrajowca dokumenty",
