@@ -124,9 +124,10 @@
     {
       "keyword": "praca kierowca taxi Bialystok dla obcokrajowca dokumenty",
       "priority": 2,
-      "status": "pending",
+      "status": "done",
       "source": "GSC 2026-09-12",
-      "note": "czesc kierowcow to obcokrajowcy"
+      "note": "czesc kierowcow to obcokrajowcy",
+      "published_date": "2026-10-26"
     },
     {
       "keyword": "ile mozna zarobic na bolcie w weekend",
