@@ -114,6 +114,20 @@ function isDuplicate(newTitle, existingArticles) {
   });
 }
 
+function getLandingPageForTopic(topic) {
+  const normalized = topic.toLowerCase();
+  if (/free\s*now|freenow/.test(normalized)) {
+    return { href: '/praca-kierowca-freenow-bialystok/', label: 'Zacznij jeździć we FreeNow' };
+  }
+  if (/uber/.test(normalized)) {
+    return { href: '/praca-kierowca-uber-bialystok/', label: 'Zacznij jeździć z Uberem' };
+  }
+  if (/wynajem|koszt(?:y)? auta|auto/.test(normalized)) {
+    return { href: '/wynajem-auta-pod-taxi-bialystok/', label: 'Sprawdź wynajem auta pod taxi' };
+  }
+  return { href: '/praca-kierowca-bolt-bialystok/', label: 'Zacznij jeździć w Bolt' };
+}
+
 // ── Gemini API ────────────────────────────────────────────────────────────────
 
 async function generateArticle(existingArticles, targetKeyword = null) {
@@ -140,6 +154,8 @@ ISTNIEJĄCE ARTYKUŁY – NIE POWTARZAJ TEMATÓW:
 ${existingList}
 
 ${keywordSection}
+
+TYTUŁ: maksymalnie 60 znaków, z frazą kluczową na początku.
 
 NAJWAŻNIEJSZA ZASADA — WARTOŚĆ DLA CZYTELNIKA:
 - Pisz artykuł, który jest NAPRAWDĘ pomocny — tak jakbyś doradzał kumplowi
@@ -259,13 +275,14 @@ function buildArticleHTML(article, slug, existingArticles = []) {
   const formattedDate = formatDate(date);
   const canonicalUrl = `https://calmdriver.pl/blog/${slug}.html`;
   const relatedLinks = buildRelatedLinks(slug, existingArticles);
+  const landingPage = getLandingPageForTopic(title);
 
   return `<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${title} — CalmDriver Taxi Białystok</title>
+  <title>${title} | CalmDriver</title>
   <meta name="description" content="${excerpt}" />
   <link rel="canonical" href="${canonicalUrl}" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -466,7 +483,7 @@ function buildArticleHTML(article, slug, existingArticles = []) {
   <div class="article-cta">
     <h3>Gotowy żeby <span>zacząć zarabiać?</span></h3>
     <p>Skontaktuj się z CalmDriver — pomożemy Ci przejść rejestrację i ruszyć z pierwszymi zleceniami w Białymstoku.</p>
-    <a href="/#contact">Dołącz do CalmDriver →</a>
+    <a href="${landingPage.href}">${landingPage.label} →</a>
   </div>
 </article>
 

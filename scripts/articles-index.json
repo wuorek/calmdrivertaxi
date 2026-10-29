@@ -1,253 +1,229 @@
 {
-  "_info": "Metadane opublikowanych artykułów bloga CalmDriver. Używane przez generator do odtworzenia blog/index.html.",
-  "articles": [
-    {
-      "slug": "ile-zarabia-kierowca-bolt-bialystok-w-2026-prawda-o-zyskach-i-wyzwania",
-      "title": "Ile Zarabia Kierowca Bolt Białystok w 2026? Prawda o Zyskach i Wyzwaniach",
-      "excerpt": "Zastanawiasz się, ile realnie zarabia kierowca Bolt w Białymstoku w 2026 roku? Odkryj, co czeka Cię na ulicach, poznaj konkretne liczby i dowiedz się, jak CalmDriver Taxi pomaga maksymalizować Twoje zyski od pierwszego dnia.",
-      "category": "Zarobki",
-      "readTime": "7 min",
-      "date": "2026-05-17"
-    },
-    {
-      "slug": "jak-zostac-kierowca-uber-bialystok-w-2026-zacznij-zarabiac-z-calmdrive",
-      "title": "Jak Zostać Kierowcą Uber Białystok w 2026? Zacznij Zarabiać z CalmDriver",
-      "excerpt": "Zastanawiasz się, jak zostać kierowcą Uber Białystok w 2026? Odkryj, jakie kroki musisz podjąć, ile realnie zarobisz i jak CalmDriver Taxi pomoże Ci szybko rozpocząć pracę na platformach Bolt, Uber i FreeNow w białostockich realiach.",
-      "category": "Platformy",
-      "readTime": "7 min",
-      "date": "2026-05-25"
-    },
-    {
-      "slug": "bialystok-2026-bolt-czy-uber-co-sie-bardziej-oplaca-dla-kierowcy-anali",
-      "title": "Białystok 2026: Bolt czy Uber co się bardziej opłaca dla Kierowcy? Analiza CalmDriver",
-      "excerpt": "Zastanawiasz się, Bolt czy Uber co się bardziej opłaca w Białymstoku w 2026 roku? W CalmDriver Taxi znamy białostocki rynek od podszewki. Przygotowaliśmy konkretną analizę dla przyszłych kierowców, byś wiedział, czego się spodziewać.",
-      "category": "Platformy",
-      "readTime": "7 min",
-      "date": "2026-05-25"
-    },
-    {
-      "slug": "wynajem-auta-do-pracy-w-taxi-bialystok-2026-szczerze-o-kosztach-i-real",
-      "title": "Wynajem auta do pracy w taxi Białystok 2026: Szczerze o kosztach i realnych zyskach z CalmDriver",
-      "excerpt": "Myślisz o zarabianiu jako kierowca na Bolt, Uber lub FreeNow w Białymstoku, ale nie masz własnego auta? W CalmDriver pokazujemy, ile naprawdę kosztuje wynajem auta do pracy w taxi Białystok w 2026 roku i na jakie zarobki możesz liczyć, unikając pułapek.",
-      "category": "Wynajem",
-      "readTime": "8 min",
-      "date": "2026-05-29"
-    },
-    {
-      "slug": "praca-kierowcy-taxi-dla-studenta-bialystok-2026-elastyczne-zarobki-i-r",
-      "title": "Praca Kierowcy Taxi dla Studenta Białystok 2026: Elastyczne Zarobki i Realne Wyzwania z CalmDriver",
-      "excerpt": "Jesteś studentem w Białymstoku i szukasz elastycznej pracy, która pozwoli Ci pogodzić naukę z zarabianiem? W CalmDriver Taxi wiemy, że praca kierowcy na platformach Bolt czy Uber może być idealnym rozwiązaniem. Sprawdź, ile realnie zarobisz w 2026 roku i jak zacząć.",
-      "category": "Porady",
-      "readTime": "9 min",
-      "date": "2026-06-01"
-    },
-    {
-      "slug": "freenow-rejestracja-kierowca-bialystok-2026-jak-zaczac-i-ile-zarobisz-",
-      "title": "FreeNow Rejestracja Kierowca Białystok 2026: Jak Zacząć i Ile Zarobisz z CalmDriver?",
-      "excerpt": "Myślisz o pracy jako kierowca FreeNow w Białymstoku w 2026 roku? Z nami proces rejestracji jest szybki, a my szczerze powiemy Ci, na co możesz liczyć w białostockich realiach.",
-      "category": "Platformy",
-      "readTime": "7 min",
-      "date": "2026-06-03"
-    },
-    {
-      "slug": "podatki-kierowca-uber-bolt-jak-rozliczac-w-bialymstoku-2026-kompletny-",
-      "title": "Podatki kierowca Uber Bolt jak rozliczać w Białymstoku 2026: Kompletny poradnik dla początkujących",
-      "excerpt": "Zastanawiasz się, jak rozliczać podatki jako kierowca Uber czy Bolt w Białymstoku w 2026 roku? Ten przewodnik rozwieje Twoje wątpliwości, krok po kroku wyjaśniając, co musisz wiedzieć, by uniknąć problemów i maksymalizować swoje zyski. Od wyboru formy prawnej, przez odliczanie kosztów, aż po pułapki, na które musisz uważać.",
-      "category": "Prawo i podatki",
-      "readTime": "12 min",
-      "date": "2026-06-05"
-    },
-    {
-      "slug": "bialystok-2026-ile-godzin-warto-pracowac-jako-kierowca-uber-bolt-i-fre",
-      "title": "Białystok 2026: Ile godzin warto pracować jako kierowca Uber, Bolt i FreeNow, żeby naprawdę zarobić?",
-      "excerpt": "Zastanawiasz się, ile godzin spędzonych za kierownicą w Białymstoku przyniesie Ci realny zysk? Ten poradnik, stworzony przez doświadczonego kierowcę, pokaże Ci, jak optymalizować czas pracy na platformach Bolt, Uber i FreeNow w 2026 roku, by uniknąć wypalenia i zmaksymalizować zarobki, skupiając się na praktyce, a nie teoriach.",
-      "category": "Porady",
-      "readTime": "8 min",
-      "date": "2026-06-12"
-    },
-    {
-      "slug": "ubezpieczenie-auta-do-taksowki-w-bialymstoku-2026-kompletny-przewodnik",
-      "title": "Ubezpieczenie Auta do Taksówki w Białymstoku 2026: Kompletny Przewodnik Kierowcy",
-      "excerpt": "Zastanawiasz się, jak ubezpieczyć auto do pracy na Bolt, Uber czy FreeNow w Białymstoku? To nie jest zwykłe OC. Poznaj realne koszty, pułapki i obowiązkowe polisy, żeby uniknąć drogich błędów.",
-      "category": "Prawo i podatki",
-      "readTime": "7 min",
-      "date": "2026-06-22"
-    },
-    {
-      "slug": "bialystok-2026-najlepsze-godziny-do-jazdy-bolt-uber-freenow-przewodnik",
-      "title": "Białystok 2026: Najlepsze Godziny do Jazdy Bolt Uber FreeNow – Przewodnik Doświadczonego Kierowcy",
-      "excerpt": "Zastanawiasz się, kiedy naprawdę warto wyruszyć na ulice Białegostoku, aby maksymalizować zarobki jako kierowca Bolt, Uber czy FreeNow? Ten poradnik, napisany przez weterana białostockich ulic, pokaże Ci realne szanse i pułapki godzinowych rozkładów jazdy. Zapomnij o ogólnikach, poznaj strategie, które działają w 2026 roku.",
-      "category": "Porady",
-      "readTime": "12 min",
-      "date": "2026-06-26"
-    },
-    {
-      "slug": "praca-kierowcy-bolt-uber-freenow-bialystok-2026-jakie-wymagania-i-doku",
-      "title": "Praca Kierowcy Bolt, Uber, FreeNow Białystok 2026: Jakie Wymagania i Dokumenty Musisz Spełnić, Zanim Wciśniesz 'Online'?",
-      "excerpt": "Myślisz o pracy kierowcy na aplikacjach w Białymstoku? Zanim wyjedziesz na ulice, musisz spełnić szereg wymagań i zebrać odpowiednie dokumenty. Ten poradnik krok po kroku wyjaśnia, co jest niezbędne w 2026 roku, by uniknąć pułapek i szybko zacząć zarabiać.",
-      "category": "Porady",
-      "readTime": "8 min",
-      "date": "2026-07-01"
-    },
-    {
-      "slug": "czy-warto-pracowac-jako-kierowca-uber-w-bialymstoku-w-2026-szczera-opi",
-      "title": "Czy warto pracować jako kierowca Uber w Białymstoku w 2026? Szczera opinia i realne wyzwania",
-      "excerpt": "Zastanawiasz się, czy praca jako kierowca Uber, Bolt czy FreeNow w Białymstoku w 2026 roku jest dla Ciebie? Przedstawiamy kompleksowy poradnik, który odpowie na Twoje pytanie, bazując na doświadczeniu i realiach lokalnego rynku. Odkryj ukryte koszty, strategie zarobku i prawdziwe wyzwania tej profesji.",
-      "category": "Porady",
-      "readTime": "8 min",
-      "date": "2026-07-03"
-    },
-    {
-      "slug": "bialystok-2026-strategie-i-triki-na-zyskowne-kursy-jak-czytac-mape-i-u",
-      "title": "Białystok 2026: Strategie i triki na zyskowne kursy – jak czytać mapę i unikać pustych przebiegów?",
-      "excerpt": "Zacząłeś jeździć na Bolt, Uber czy FreeNow w Białymstoku, a może dopiero to rozważasz? Oprócz 'godzin szczytu' istnieje sztuka zarabiania, która pozwoli Ci wyciągnąć więcej. Ten poradnik to esencja doświadczenia z białostockich ulic: jak przewidywać ruch, unikać 'czarnych dziur' i maksymalizować każdy przejechany kilometr, by Twoje zarobki realnie rosły.",
-      "category": "Porady",
-      "readTime": "8 min",
-      "date": "2026-07-06"
-    },
-    {
-      "slug": "nie-tylko-paliwo-jak-obnizyc-koszty-eksploatacji-auta-i-zwiekszyc-real",
-      "title": "Nie Tylko Paliwo: Jak Obniżyć Koszty Eksploatacji Auta i Zwiększyć Realny Zysk Kierowcy w Białymstoku?",
-      "excerpt": "W pracy kierowcy platformowego w Białymstoku paliwo to tylko wierzchołek góry lodowej. Dowiedz się, gdzie ukrywają się prawdziwe koszty eksploatacji auta i jak je zminimalizować, aby więcej zostawało w Twojej kieszeni.",
-      "category": "Porady",
-      "readTime": "7 min",
-      "date": "2026-07-08"
-    },
-    {
-      "slug": "poza-kierownica-jak-przetrwac-trudne-kursy-i-awarie-jako-kierowca-bolt",
-      "title": "Poza kierownicą: Jak przetrwać trudne kursy i awarie jako kierowca Bolt/Uber/FreeNow w Białymstoku?",
-      "excerpt": "Jazda na platformach w Białymstoku to nie tylko płynny ruch. Ten poradnik to Twoja mapa drogowa przez nieprzewidziane sytuacje: od pijanych pasażerów wracających z Lipowej, przez no-show na Dworcu PKP, po awarię auta na Słonecznym Stoku. Dowiedz się, jak reagować, minimalizować straty i dbać o swoje bezpieczeństwo.",
-      "category": "Porady",
-      "readTime": "10 min",
-      "date": "2026-07-10"
-    },
-    {
-      "slug": "twoj-pierwszy-tydzien-na-platformie-w-bialymstoku-co-musisz-wiedziec-z",
-      "title": "Twój Pierwszy Tydzień na Platformie w Białymstoku: Co MUSISZ Wiedzieć, żeby NIE Spalić Się na Starcie",
-      "excerpt": "Zaczynasz pracę jako kierowca Bolt, Uber lub FreeNow w Białymstoku? Pierwszy tydzień to nie tylko emocje, ale i pułapki. Ten poradnik to Twoja mapa, jak przetrwać start i uniknąć typowych błędów, które kosztują czas i pieniądze.",
-      "category": "Porady",
-      "readTime": "10 min",
-      "date": "2026-07-15"
-    },
-    {
-      "slug": "nie-tylko-kilometry-jak-budowac-reputacje-i-unikac-spadku-ocen-jako-ki",
-      "title": "Nie tylko kilometry: Jak budować reputację i unikać spadku ocen jako kierowca Bolt/Uber/FreeNow w Białymstoku",
-      "excerpt": "W Białymstoku Twoja reputacja jako kierowcy to złoto. Dowiedz się, jak utrzymać najwyższe oceny na platformach Bolt, Uber i FreeNow, radzić sobie z trudnymi pasażerami i skutecznie reagować na spadki, by Twoje konto było zawsze aktywne i zyskowne.",
-      "category": "Porady",
-      "readTime": "8 min",
-      "date": "2026-07-17"
-    },
-    {
-      "slug": "pory-roku-za-kierownica-jak-pogoda-w-bialymstoku-ksztaltuje-prace-kier",
-      "title": "Pory Roku za Kierownicą: Jak Pogoda w Białymstoku Kształtuje Pracę Kierowcy Bolt, Uber, FreeNow?",
-      "excerpt": "W Białymstoku pogoda to nie tylko temat do rozmów, ale kluczowy czynnik wpływający na Twoje zarobki i bezpieczeństwo jako kierowca Bolt, Uber czy FreeNow. Poznaj specyfikę pracy w każdym sezonie.",
-      "category": "Porady",
-      "readTime": "10 min",
-      "date": "2026-07-20"
-    },
-    {
-      "slug": "twoj-mobilny-warsztat-jak-optymalnie-wyposazyc-auto-i-smartfon-do-prac",
-      "title": "Twój Mobilny Warsztat: Jak Optymalnie Wyposażyć Auto i Smartfon do Pracy na Platformach w Białymstoku?",
-      "excerpt": "Nie wystarczy auto i aplikacja. Dowiedz się, jak przygotować swój samochód i smartfon, by maksymalizować zyski i komfort pracy jako kierowca Bolt, Uber czy FreeNow w Białymstoku. To praktyczny przewodnik dla każdego, kto chce zacząć zarabiać skutecznie.",
-      "category": "Porady",
-      "readTime": "8 min",
-      "date": "2026-07-22"
-    },
-    {
-      "slug": "jak-rozszyfrowac-algorytmy-bolt-uber-freenow-w-bialymstoku-twoje-tajne",
-      "title": "Jak rozszyfrować algorytmy Bolt, Uber, FreeNow w Białymstoku? Twoje tajne bronie do maksymalizacji zysków",
-      "excerpt": "Nie wystarczy jeździć, trzeba rozumieć, jak platformy rozdzielają kursy i bonusy. Poznaj białostockie strategie, by wycisnąć z aplikacji maksimum, nie tylko z kilometrów. Od zrozumienia mnożników po ukryte zasady priorytetyzacji – ten poradnik to Twój klucz do efektywniejszej pracy.",
-      "category": "Platformy",
-      "readTime": "8 min",
-      "date": "2026-07-24"
-    },
-    {
-      "slug": "finansowa-dyscyplina-za-kierownica-jak-skutecznie-zarzadzac-pieniedzmi",
-      "title": "Finansowa Dyscyplina za Kierownicą: Jak Skutecznie Zarządzać Pieniędzmi jako Kierowca Bolt/Uber/FreeNow w Białymstoku?",
-      "excerpt": "Pieniądze z platform kuszą, ale łatwo wpaść w pułapki. Ten poradnik pokaże Ci, jak utrzymać finanse w ryzach, planować wydatki i realnie zwiększać swoje zyski, pracując jako kierowca w Białymstoku.",
-      "category": "Porady",
-      "readTime": "10 min",
-      "date": "2026-07-31"
-    },
-    {
-      "slug": "mistrz-obslugi-pasazera-w-bialymstoku-jak-zbudowac-reputacje-i-maksyma",
-      "title": "Mistrz Obsługi Pasażera w Białymstoku: Jak Zbudować Reputację i Maksymalizować Napiwki?",
-      "excerpt": "Nie chodzi tylko o dowiezienie z punktu A do B. Dowiedz się, jak proaktywna obsługa, drobne gesty i zrozumienie białostockich pasażerów przekładają się na wyższe oceny i realne napiwki.",
-      "category": "Porady",
-      "readTime": "8 min",
-      "date": "2026-08-07"
-    },
-    {
-      "slug": "strategie-plynnego-przelaczania-sie-miedzy-platformami-bolt-uber-freen",
-      "title": "Strategie płynnego przełączania się między platformami Bolt, Uber, FreeNow w Białymstoku: Jak z każdej wycisnąć maksimum?",
-      "excerpt": "Odkryj, jak efektywnie zarządzać wieloma aplikacjami taksówkowymi w Białymstoku. Ten poradnik pokaże Ci, kiedy i jak przełączać się między Bolt, Uber i FreeNow, aby znacząco zwiększyć swoje zarobki i unikać pustych przebiegów.",
-      "category": "Porady",
-      "readTime": "6 min",
-      "date": "2026-08-10"
-    },
-    {
-      "slug": "nawigacja-po-bialymstoku-dla-kierowcy-boltuberfreenow-skroty-pulapki-i",
-      "title": "Nawigacja po Białymstoku dla Kierowcy Bolt/Uber/FreeNow: Skróty, Pułapki i Gdzie Szukać Klientów, O Czym Nie Powie Ci GPS",
-      "excerpt": "Mapy w telefonie to podstawa, ale prawdziwy zarobek kierowcy platformowego w Białymstoku tkwi w tym, czego one nie pokażą. Ten poradnik to Twoja tajna broń – poznaj miasto od podszewki i pracuj efektywniej, omijając korki i zawsze będąc tam, gdzie są klienci.",
-      "category": "Porady",
-      "readTime": "8 min",
-      "date": "2026-09-28"
-    },
-    {
-      "slug": "bolt-bialystok-2026-jakie-sa-prawdziwe-wymagania-do-pracy-jako-kierowc",
-      "title": "Bolt Białystok 2026: Jakie są PRAWDZIWE wymagania do pracy jako kierowca i co musisz wiedzieć przed startem?",
-      "excerpt": "Zanim usiądziesz za kółkiem jako kierowca Bolt w Białymstoku, musisz wiedzieć, że to nie tylko papierologia. Sprawdź, jakie są realne wymagania i wyzwania pracy na platformie, by uniknąć rozczarowań i zacząć zarabiać skutecznie.",
-      "category": "Porady",
-      "readTime": "10 min",
-      "date": "2026-10-05"
-    },
-    {
-      "slug": "kierowca-bolt-w-bialymstoku-w-2026-ile-naprawde-zarobisz-i-co-musisz-z",
-      "title": "Kierowca Bolt w Białymstoku w 2026: Ile naprawdę zarobisz i co musisz zrobić, żeby wycisnąć maksimum?",
-      "excerpt": "Myślisz o pracy jako kierowca Bolt w Białymstoku? Zapomnij o obietnicach z internetu. Sprawdź, ile realnie zostaje w kieszeni po odliczeniu wszystkich kosztów i jak naprawdę możesz zwiększyć swoje zarobki, wykorzystując lokalną specyfikę miasta.",
-      "category": "Zarobki",
-      "readTime": "8 min",
-      "date": "2026-10-07"
-    },
-    {
-      "slug": "bolt-zarobki-2026-w-bialymstoku-ile-faktycznie-zostaje-ci-na-reke-po-o",
-      "title": "Bolt Zarobki 2026 w Białymstoku: Ile Faktycznie Zostaje Ci na Rękę po Odliczeniu Wszystkich Kosztów?",
-      "excerpt": "Zastanawiasz się, ile realnie zarobisz jako kierowca Bolt w Białymstoku w 2026 roku? Odkryj, jak obliczyć swoje prawdziwe, nettopwe zarobki po odliczeniu prowizji, paliwa, amortyzacji i podatków. Konkretne liczby od doświadczonego kierowcy.",
-      "category": "Zarobki",
-      "readTime": "8 min",
-      "date": "2026-10-12"
-    },
-    {
-      "slug": "licencja-taxi-w-bialymstoku-2026-jak-uzyskac-krok-po-kroku-i-czy-warto",
-      "title": "Licencja Taxi w Białymstoku 2026: Jak Uzyskać Krok po Kroku i Czy Warto dla Kierowcy Platform?",
-      "excerpt": "Myślisz o pracy taksówkarza w Białymstoku na poważnie? W 2026 roku sama rejestracja na Bolt czy Uber to za mało. Ten poradnik od doświadczonego kierowcy pokaże Ci krok po kroku, jak uzyskać pełną licencję taxi, ile to kosztuje i dlaczego warto zrobić ten dodatkowy krok, by zwiększyć swoje realne zarobki i niezależność.",
-      "category": "Prawo i podatki",
-      "readTime": "8 min",
-      "date": "2026-10-16"
-    },
-    {
-      "slug": "bolt-bialystok-2026-praca-kierowca-bez-wlasnej-firmy-na-umowe-zlecenie",
-      "title": "Bolt Białystok 2026: Praca Kierowca bez Własnej Firmy na Umowę Zlecenie – Co MUSISZ Wiedzieć?",
-      "excerpt": "Zastanawiasz się nad pracą jako kierowca Bolt w Białymstoku, ale wizja zakładania własnej firmy Cię przeraża? Umowa zlecenie przez partnera rozliczeniowego to popularne rozwiązanie. Sprawdź, jak to działa w praktyce, jakie są realne koszty i czy to model dla Ciebie w 2026 roku.",
-      "category": "Porady",
-      "readTime": "10 min",
-      "date": "2026-10-21"
-    },
-    {
-      "slug": "wynajem-auta-pod-taxi-bialystok-2026-co-naprawde-kryje-sie-w-cenniku-i",
-      "title": "Wynajem auta pod taxi Białystok 2026: Co naprawdę kryje się w cenniku i jak wybrać mądrze?",
-      "excerpt": "Zastanawiasz się nad pracą na platformach Bolt, Uber czy FreeNow w Białymstoku, ale nie masz własnego auta? Wynajem to kusząca opcja. Ale co dokładnie oznacza 'cennik' wynajmu i jak rozszyfrować jego zapisy, żeby nie wpaść w pułapki? Jako doświadczony kierowca opowiem Ci, na co zwrócić uwagę, by Twoja przygoda z taxi była opłacalna.",
-      "category": "Wynajem",
-      "readTime": "8 min",
-      "date": "2026-10-23"
-    },
-    {
-      "slug": "praca-kierowca-taxi-bialystok-2026-dla-obcokrajowca-kompletny-przewodn",
-      "title": "Praca Kierowca Taxi Białystok 2026 dla Obcokrajowca: Kompletny Przewodnik po Dokumentach i Wyzwaniach",
-      "excerpt": "Rozważasz pracę jako kierowca Bolt, Uber czy FreeNow w Białymstoku, ale nie jesteś obywatelem Polski? To poradnik dla Ciebie. Dowiedz się, jakie dokumenty musisz przygotować, jak sprostać wymogom licencyjnym i co czeka Cię na białostockich ulicach w 2026 roku.",
-      "category": "Prawo i podatki",
-      "readTime": "8 min",
-      "date": "2026-10-26"
-    }
-  ]
+    "_info":  "Metadane opublikowanych artykułów bloga CalmDriver. Używane przez generator do odtworzenia blog/index.html.",
+    "articles":  [
+                     {
+                         "slug":  "ile-zarabia-kierowca-bolt-bialystok-w-2026-prawda-o-zyskach-i-wyzwania",
+                         "title":  "Ile zarabia kierowca Bolt w Białymstoku 2026? Realne liczby",
+                         "excerpt":  "Realne zarobki kierowcy Bolt w Białymstoku: stawki po kosztach, lokalne godziny pracy i warunki startu z CalmDriver.",
+                         "category":  "Zarobki",
+                         "readTime":  "7 min",
+                         "date":  "2026-05-17"
+                     },
+                     {
+                         "slug":  "jak-zostac-kierowca-uber-bialystok-w-2026-zacznij-zarabiac-z-calmdrive",
+                         "title":  "Jak Zostać Kierowcą Uber Białystok w 2026? Zacznij Zarabiać z CalmDriver",
+                         "excerpt":  "Zastanawiasz się, jak zostać kierowcą Uber Białystok w 2026? Odkryj, jakie kroki musisz podjąć, ile realnie zarobisz i jak CalmDriver Taxi pomoże Ci szybko rozpocząć pracę na platformach Bolt, Uber i FreeNow w białostockich realiach.",
+                         "category":  "Platformy",
+                         "readTime":  "7 min",
+                         "date":  "2026-05-25"
+                     },
+                     {
+                         "slug":  "bialystok-2026-bolt-czy-uber-co-sie-bardziej-oplaca-dla-kierowcy-anali",
+                         "title":  "Bolt czy Uber w Białymstoku 2026 — co się bardziej opłaca?",
+                         "excerpt":  "Porównanie Bolta i Ubera w Białymstoku: prowizje, liczba zleceń, godziny szczytu i ile zostaje na rękę. Sprawdź, od której aplikacji zacząć.",
+                         "category":  "Platformy",
+                         "readTime":  "7 min",
+                         "date":  "2026-05-25"
+                     },
+                     {
+                         "slug":  "wynajem-auta-do-pracy-w-taxi-bialystok-2026-szczerze-o-kosztach-i-real",
+                         "title":  "Wynajem auta do pracy w taxi Białystok 2026: Szczerze o kosztach i realnych zyskach z CalmDriver",
+                         "excerpt":  "Myślisz o zarabianiu jako kierowca na Bolt, Uber lub FreeNow w Białymstoku, ale nie masz własnego auta? W CalmDriver pokazujemy, ile naprawdę kosztuje wynajem auta do pracy w taxi Białystok w 2026 roku i na jakie zarobki możesz liczyć, unikając pułapek.",
+                         "category":  "Wynajem",
+                         "readTime":  "8 min",
+                         "date":  "2026-05-29"
+                     },
+                     {
+                         "slug":  "praca-kierowcy-taxi-dla-studenta-bialystok-2026-elastyczne-zarobki-i-r",
+                         "title":  "Praca Kierowcy Taxi dla Studenta Białystok 2026: Elastyczne Zarobki i Realne Wyzwania z CalmDriver",
+                         "excerpt":  "Jesteś studentem w Białymstoku i szukasz elastycznej pracy, która pozwoli Ci pogodzić naukę z zarabianiem? W CalmDriver Taxi wiemy, że praca kierowcy na platformach Bolt czy Uber może być idealnym rozwiązaniem. Sprawdź, ile realnie zarobisz w 2026 roku i jak zacząć.",
+                         "category":  "Porady",
+                         "readTime":  "9 min",
+                         "date":  "2026-06-01"
+                     },
+                     {
+                         "slug":  "podatki-kierowca-uber-bolt-jak-rozliczac-w-bialymstoku-2026-kompletny-",
+                         "title":  "Podatki kierowcy Bolt i Uber 2026 — jak się rozliczać?",
+                         "excerpt":  "Ryczałt, VAT, umowa zlecenie czy własna firma? Krok po kroku, jak kierowca Bolt i Uber w Białymstoku rozlicza podatki w 2026 roku.",
+                         "category":  "Prawo i podatki",
+                         "readTime":  "12 min",
+                         "date":  "2026-06-05"
+                     },
+                     {
+                         "slug":  "bialystok-2026-ile-godzin-warto-pracowac-jako-kierowca-uber-bolt-i-fre",
+                         "title":  "Białystok 2026: Ile godzin warto pracować jako kierowca Uber, Bolt i FreeNow, żeby naprawdę zarobić?",
+                         "excerpt":  "Zastanawiasz się, ile godzin spędzonych za kierownicą w Białymstoku przyniesie Ci realny zysk? Ten poradnik, stworzony przez doświadczonego kierowcę, pokaże Ci, jak optymalizować czas pracy na platformach Bolt, Uber i FreeNow w 2026 roku, by uniknąć wypalenia i zmaksymalizować zarobki, skupiając się na praktyce, a nie teoriach.",
+                         "category":  "Porady",
+                         "readTime":  "8 min",
+                         "date":  "2026-06-12"
+                     },
+                     {
+                         "slug":  "ubezpieczenie-auta-do-taksowki-w-bialymstoku-2026-kompletny-przewodnik",
+                         "title":  "Ubezpieczenie Auta do Taksówki w Białymstoku 2026: Kompletny Przewodnik Kierowcy",
+                         "excerpt":  "Zastanawiasz się, jak ubezpieczyć auto do pracy na Bolt, Uber czy FreeNow w Białymstoku? To nie jest zwykłe OC. Poznaj realne koszty, pułapki i obowiązkowe polisy, żeby uniknąć drogich błędów.",
+                         "category":  "Prawo i podatki",
+                         "readTime":  "7 min",
+                         "date":  "2026-06-22"
+                     },
+                     {
+                         "slug":  "bialystok-2026-najlepsze-godziny-do-jazdy-bolt-uber-freenow-przewodnik",
+                         "title":  "Białystok 2026: Najlepsze Godziny do Jazdy Bolt Uber FreeNow – Przewodnik Doświadczonego Kierowcy",
+                         "excerpt":  "Zastanawiasz się, kiedy naprawdę warto wyruszyć na ulice Białegostoku, aby maksymalizować zarobki jako kierowca Bolt, Uber czy FreeNow? Ten poradnik, napisany przez weterana białostockich ulic, pokaże Ci realne szanse i pułapki godzinowych rozkładów jazdy. Zapomnij o ogólnikach, poznaj strategie, które działają w 2026 roku.",
+                         "category":  "Porady",
+                         "readTime":  "12 min",
+                         "date":  "2026-06-26"
+                     },
+                     {
+                         "slug":  "praca-kierowcy-bolt-uber-freenow-bialystok-2026-jakie-wymagania-i-doku",
+                         "title":  "Praca Kierowcy Bolt, Uber, FreeNow Białystok 2026: Jakie Wymagania i Dokumenty Musisz Spełnić, Zanim Wciśniesz \u0027Online\u0027?",
+                         "excerpt":  "Myślisz o pracy kierowcy na aplikacjach w Białymstoku? Zanim wyjedziesz na ulice, musisz spełnić szereg wymagań i zebrać odpowiednie dokumenty. Ten poradnik krok po kroku wyjaśnia, co jest niezbędne w 2026 roku, by uniknąć pułapek i szybko zacząć zarabiać.",
+                         "category":  "Porady",
+                         "readTime":  "8 min",
+                         "date":  "2026-07-01"
+                     },
+                     {
+                         "slug":  "czy-warto-pracowac-jako-kierowca-uber-w-bialymstoku-w-2026-szczera-opi",
+                         "title":  "Czy warto pracować jako kierowca Uber w Białymstoku w 2026? Szczera opinia i realne wyzwania",
+                         "excerpt":  "Zastanawiasz się, czy praca jako kierowca Uber, Bolt czy FreeNow w Białymstoku w 2026 roku jest dla Ciebie? Przedstawiamy kompleksowy poradnik, który odpowie na Twoje pytanie, bazując na doświadczeniu i realiach lokalnego rynku. Odkryj ukryte koszty, strategie zarobku i prawdziwe wyzwania tej profesji.",
+                         "category":  "Porady",
+                         "readTime":  "8 min",
+                         "date":  "2026-07-03"
+                     },
+                     {
+                         "slug":  "bialystok-2026-strategie-i-triki-na-zyskowne-kursy-jak-czytac-mape-i-u",
+                         "title":  "Białystok 2026: Strategie i triki na zyskowne kursy – jak czytać mapę i unikać pustych przebiegów?",
+                         "excerpt":  "Zacząłeś jeździć na Bolt, Uber czy FreeNow w Białymstoku, a może dopiero to rozważasz? Oprócz \u0027godzin szczytu\u0027 istnieje sztuka zarabiania, która pozwoli Ci wyciągnąć więcej. Ten poradnik to esencja doświadczenia z białostockich ulic: jak przewidywać ruch, unikać \u0027czarnych dziur\u0027 i maksymalizować każdy przejechany kilometr, by Twoje zarobki realnie rosły.",
+                         "category":  "Porady",
+                         "readTime":  "8 min",
+                         "date":  "2026-07-06"
+                     },
+                     {
+                         "slug":  "nie-tylko-paliwo-jak-obnizyc-koszty-eksploatacji-auta-i-zwiekszyc-real",
+                         "title":  "Nie Tylko Paliwo: Jak Obniżyć Koszty Eksploatacji Auta i Zwiększyć Realny Zysk Kierowcy w Białymstoku?",
+                         "excerpt":  "W pracy kierowcy platformowego w Białymstoku paliwo to tylko wierzchołek góry lodowej. Dowiedz się, gdzie ukrywają się prawdziwe koszty eksploatacji auta i jak je zminimalizować, aby więcej zostawało w Twojej kieszeni.",
+                         "category":  "Porady",
+                         "readTime":  "7 min",
+                         "date":  "2026-07-08"
+                     },
+                     {
+                         "slug":  "poza-kierownica-jak-przetrwac-trudne-kursy-i-awarie-jako-kierowca-bolt",
+                         "title":  "Poza kierownicą: Jak przetrwać trudne kursy i awarie jako kierowca Bolt/Uber/FreeNow w Białymstoku?",
+                         "excerpt":  "Jazda na platformach w Białymstoku to nie tylko płynny ruch. Ten poradnik to Twoja mapa drogowa przez nieprzewidziane sytuacje: od pijanych pasażerów wracających z Lipowej, przez no-show na Dworcu PKP, po awarię auta na Słonecznym Stoku. Dowiedz się, jak reagować, minimalizować straty i dbać o swoje bezpieczeństwo.",
+                         "category":  "Porady",
+                         "readTime":  "10 min",
+                         "date":  "2026-07-10"
+                     },
+                     {
+                         "slug":  "twoj-pierwszy-tydzien-na-platformie-w-bialymstoku-co-musisz-wiedziec-z",
+                         "title":  "Twój Pierwszy Tydzień na Platformie w Białymstoku: Co MUSISZ Wiedzieć, żeby NIE Spalić Się na Starcie",
+                         "excerpt":  "Zaczynasz pracę jako kierowca Bolt, Uber lub FreeNow w Białymstoku? Pierwszy tydzień to nie tylko emocje, ale i pułapki. Ten poradnik to Twoja mapa, jak przetrwać start i uniknąć typowych błędów, które kosztują czas i pieniądze.",
+                         "category":  "Porady",
+                         "readTime":  "10 min",
+                         "date":  "2026-07-15"
+                     },
+                     {
+                         "slug":  "nie-tylko-kilometry-jak-budowac-reputacje-i-unikac-spadku-ocen-jako-ki",
+                         "title":  "Nie tylko kilometry: Jak budować reputację i unikać spadku ocen jako kierowca Bolt/Uber/FreeNow w Białymstoku",
+                         "excerpt":  "W Białymstoku Twoja reputacja jako kierowcy to złoto. Dowiedz się, jak utrzymać najwyższe oceny na platformach Bolt, Uber i FreeNow, radzić sobie z trudnymi pasażerami i skutecznie reagować na spadki, by Twoje konto było zawsze aktywne i zyskowne.",
+                         "category":  "Porady",
+                         "readTime":  "8 min",
+                         "date":  "2026-07-17"
+                     },
+                     {
+                         "slug":  "pory-roku-za-kierownica-jak-pogoda-w-bialymstoku-ksztaltuje-prace-kier",
+                         "title":  "Pory Roku za Kierownicą: Jak Pogoda w Białymstoku Kształtuje Pracę Kierowcy Bolt, Uber, FreeNow?",
+                         "excerpt":  "W Białymstoku pogoda to nie tylko temat do rozmów, ale kluczowy czynnik wpływający na Twoje zarobki i bezpieczeństwo jako kierowca Bolt, Uber czy FreeNow. Poznaj specyfikę pracy w każdym sezonie.",
+                         "category":  "Porady",
+                         "readTime":  "10 min",
+                         "date":  "2026-07-20"
+                     },
+                     {
+                         "slug":  "twoj-mobilny-warsztat-jak-optymalnie-wyposazyc-auto-i-smartfon-do-prac",
+                         "title":  "Twój Mobilny Warsztat: Jak Optymalnie Wyposażyć Auto i Smartfon do Pracy na Platformach w Białymstoku?",
+                         "excerpt":  "Nie wystarczy auto i aplikacja. Dowiedz się, jak przygotować swój samochód i smartfon, by maksymalizować zyski i komfort pracy jako kierowca Bolt, Uber czy FreeNow w Białymstoku. To praktyczny przewodnik dla każdego, kto chce zacząć zarabiać skutecznie.",
+                         "category":  "Porady",
+                         "readTime":  "8 min",
+                         "date":  "2026-07-22"
+                     },
+                     {
+                         "slug":  "jak-rozszyfrowac-algorytmy-bolt-uber-freenow-w-bialymstoku-twoje-tajne",
+                         "title":  "Jak rozszyfrować algorytmy Bolt, Uber, FreeNow w Białymstoku? Twoje tajne bronie do maksymalizacji zysków",
+                         "excerpt":  "Nie wystarczy jeździć, trzeba rozumieć, jak platformy rozdzielają kursy i bonusy. Poznaj białostockie strategie, by wycisnąć z aplikacji maksimum, nie tylko z kilometrów. Od zrozumienia mnożników po ukryte zasady priorytetyzacji – ten poradnik to Twój klucz do efektywniejszej pracy.",
+                         "category":  "Platformy",
+                         "readTime":  "8 min",
+                         "date":  "2026-07-24"
+                     },
+                     {
+                         "slug":  "finansowa-dyscyplina-za-kierownica-jak-skutecznie-zarzadzac-pieniedzmi",
+                         "title":  "Finansowa Dyscyplina za Kierownicą: Jak Skutecznie Zarządzać Pieniędzmi jako Kierowca Bolt/Uber/FreeNow w Białymstoku?",
+                         "excerpt":  "Pieniądze z platform kuszą, ale łatwo wpaść w pułapki. Ten poradnik pokaże Ci, jak utrzymać finanse w ryzach, planować wydatki i realnie zwiększać swoje zyski, pracując jako kierowca w Białymstoku.",
+                         "category":  "Porady",
+                         "readTime":  "10 min",
+                         "date":  "2026-07-31"
+                     },
+                     {
+                         "slug":  "mistrz-obslugi-pasazera-w-bialymstoku-jak-zbudowac-reputacje-i-maksyma",
+                         "title":  "Mistrz Obsługi Pasażera w Białymstoku: Jak Zbudować Reputację i Maksymalizować Napiwki?",
+                         "excerpt":  "Nie chodzi tylko o dowiezienie z punktu A do B. Dowiedz się, jak proaktywna obsługa, drobne gesty i zrozumienie białostockich pasażerów przekładają się na wyższe oceny i realne napiwki.",
+                         "category":  "Porady",
+                         "readTime":  "8 min",
+                         "date":  "2026-08-07"
+                     },
+                     {
+                         "slug":  "strategie-plynnego-przelaczania-sie-miedzy-platformami-bolt-uber-freen",
+                         "title":  "Strategie płynnego przełączania się między platformami Bolt, Uber, FreeNow w Białymstoku: Jak z każdej wycisnąć maksimum?",
+                         "excerpt":  "Odkryj, jak efektywnie zarządzać wieloma aplikacjami taksówkowymi w Białymstoku. Ten poradnik pokaże Ci, kiedy i jak przełączać się między Bolt, Uber i FreeNow, aby znacząco zwiększyć swoje zarobki i unikać pustych przebiegów.",
+                         "category":  "Porady",
+                         "readTime":  "6 min",
+                         "date":  "2026-08-10"
+                     },
+                     {
+                         "slug":  "nawigacja-po-bialymstoku-dla-kierowcy-boltuberfreenow-skroty-pulapki-i",
+                         "title":  "Nawigacja po Białymstoku dla Kierowcy Bolt/Uber/FreeNow: Skróty, Pułapki i Gdzie Szukać Klientów, O Czym Nie Powie Ci GPS",
+                         "excerpt":  "Mapy w telefonie to podstawa, ale prawdziwy zarobek kierowcy platformowego w Białymstoku tkwi w tym, czego one nie pokażą. Ten poradnik to Twoja tajna broń – poznaj miasto od podszewki i pracuj efektywniej, omijając korki i zawsze będąc tam, gdzie są klienci.",
+                         "category":  "Porady",
+                         "readTime":  "8 min",
+                         "date":  "2026-09-28"
+                     },
+                     {
+                         "slug":  "bolt-bialystok-2026-jakie-sa-prawdziwe-wymagania-do-pracy-jako-kierowc",
+                         "title":  "Bolt Białystok 2026: Jakie są PRAWDZIWE wymagania do pracy jako kierowca i co musisz wiedzieć przed startem?",
+                         "excerpt":  "Zanim usiądziesz za kółkiem jako kierowca Bolt w Białymstoku, musisz wiedzieć, że to nie tylko papierologia. Sprawdź, jakie są realne wymagania i wyzwania pracy na platformie, by uniknąć rozczarowań i zacząć zarabiać skutecznie.",
+                         "category":  "Porady",
+                         "readTime":  "10 min",
+                         "date":  "2026-10-05"
+                     },
+                     {
+                         "slug":  "licencja-taxi-w-bialymstoku-2026-jak-uzyskac-krok-po-kroku-i-czy-warto",
+                         "title":  "Licencja Taxi w Białymstoku 2026: Jak Uzyskać Krok po Kroku i Czy Warto dla Kierowcy Platform?",
+                         "excerpt":  "Myślisz o pracy taksówkarza w Białymstoku na poważnie? W 2026 roku sama rejestracja na Bolt czy Uber to za mało. Ten poradnik od doświadczonego kierowcy pokaże Ci krok po kroku, jak uzyskać pełną licencję taxi, ile to kosztuje i dlaczego warto zrobić ten dodatkowy krok, by zwiększyć swoje realne zarobki i niezależność.",
+                         "category":  "Prawo i podatki",
+                         "readTime":  "8 min",
+                         "date":  "2026-10-16"
+                     },
+                     {
+                         "slug":  "bolt-bialystok-2026-praca-kierowca-bez-wlasnej-firmy-na-umowe-zlecenie",
+                         "title":  "Bolt Białystok 2026: Praca Kierowca bez Własnej Firmy na Umowę Zlecenie – Co MUSISZ Wiedzieć?",
+                         "excerpt":  "Zastanawiasz się nad pracą jako kierowca Bolt w Białymstoku, ale wizja zakładania własnej firmy Cię przeraża? Umowa zlecenie przez partnera rozliczeniowego to popularne rozwiązanie. Sprawdź, jak to działa w praktyce, jakie są realne koszty i czy to model dla Ciebie w 2026 roku.",
+                         "category":  "Porady",
+                         "readTime":  "10 min",
+                         "date":  "2026-10-21"
+                     },
+                     {
+                         "slug":  "wynajem-auta-pod-taxi-bialystok-2026-co-naprawde-kryje-sie-w-cenniku-i",
+                         "title":  "Wynajem auta pod taxi Białystok 2026: Co naprawdę kryje się w cenniku i jak wybrać mądrze?",
+                         "excerpt":  "Zastanawiasz się nad pracą na platformach Bolt, Uber czy FreeNow w Białymstoku, ale nie masz własnego auta? Wynajem to kusząca opcja. Ale co dokładnie oznacza \u0027cennik\u0027 wynajmu i jak rozszyfrować jego zapisy, żeby nie wpaść w pułapki? Jako doświadczony kierowca opowiem Ci, na co zwrócić uwagę, by Twoja przygoda z taxi była opłacalna.",
+                         "category":  "Wynajem",
+                         "readTime":  "8 min",
+                         "date":  "2026-10-23"
+                     },
+                     {
+                         "slug":  "praca-kierowca-taxi-bialystok-2026-dla-obcokrajowca-kompletny-przewodn",
+                         "title":  "Praca Kierowca Taxi Białystok 2026 dla Obcokrajowca: Kompletny Przewodnik po Dokumentach i Wyzwaniach",
+                         "excerpt":  "Rozważasz pracę jako kierowca Bolt, Uber czy FreeNow w Białymstoku, ale nie jesteś obywatelem Polski? To poradnik dla Ciebie. Dowiedz się, jakie dokumenty musisz przygotować, jak sprostać wymogom licencyjnym i co czeka Cię na białostockich ulicach w 2026 roku.",
+                         "category":  "Prawo i podatki",
+                         "readTime":  "8 min",
+                         "date":  "2026-10-26"
+                     }
+                 ]
 }

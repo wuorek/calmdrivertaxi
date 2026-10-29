@@ -21,6 +21,11 @@ const STATIC_PAGES = [
   { loc: 'https://calmdriver.pl/',      priority: '1.0', changefreq: 'monthly',  hreflang: true,  date: TODAY },
   { loc: 'https://calmdriver.pl/faq/',  priority: '0.8', changefreq: 'weekly',   hreflang: false, date: TODAY },
   { loc: 'https://calmdriver.pl/blog/', priority: '0.8', changefreq: 'daily',    hreflang: false, date: TODAY },
+  { loc: 'https://calmdriver.pl/praca-kierowca-bolt-bialystok/', priority: '0.9', changefreq: 'monthly', hreflang: false, date: TODAY },
+  { loc: 'https://calmdriver.pl/praca-kierowca-uber-bialystok/', priority: '0.9', changefreq: 'monthly', hreflang: false, date: TODAY },
+  { loc: 'https://calmdriver.pl/praca-kierowca-freenow-bialystok/', priority: '0.9', changefreq: 'monthly', hreflang: false, date: TODAY },
+  { loc: 'https://calmdriver.pl/wynajem-auta-pod-taxi-bialystok/', priority: '0.9', changefreq: 'monthly', hreflang: false, date: TODAY },
+  { loc: 'https://calmdriver.pl/taxi-bialystok/', priority: '0.5', changefreq: 'monthly', hreflang: false, date: TODAY },
 ];
 
 function buildUrlEntry({ loc, priority, changefreq, hreflang, date }) {
