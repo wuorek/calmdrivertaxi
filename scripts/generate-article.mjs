@@ -532,6 +532,7 @@ function buildArticleHTML(article, slug, existingArticles = []) {
     <a href="/blog/">Blog</a>
     <a href="/">Strona główna</a>
     <a href="/#contact">Kontakt</a>
+    <a href="/taxi-bialystok/">Taxi Białystok</a>
     <a href="tel:+48739980388">📞 739 980 388</a>
   </div>
 </footer>
