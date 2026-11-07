@@ -18,9 +18,9 @@
 
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { regenerateSitemap } from './update-sitemap.mjs';
+import { commitAndPush, rollback, syncBeforeGenerate } from './git-publish.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, '..');
@@ -127,19 +127,54 @@ ZWRÓĆ WYŁĄCZNIE JSON (bez markdown, bez tekstu przed/po):
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.8, maxOutputTokens: 2048 },
+      generationConfig: {
+        temperature: 0.8,
+        maxOutputTokens: 4096,
+        responseMimeType: 'application/json',
+        thinkingConfig: { thinkingBudget: 1024 },
+      },
     }),
   });
 
   if (!response.ok) {
     const err = await response.text();
-    throw new Error(`Gemini API ${response.status}: ${err}`);
+    const error = new Error(`Gemini API ${response.status}: ${err}`);
+    error.geminiPermanent = [400, 401, 402, 403].includes(response.status);
+    if (response.status === 402) error.message += ' — doładuj kredyty w AI Studio.';
+    throw error;
   }
 
   const data = await response.json();
+  const finishReason = data?.candidates?.[0]?.finishReason;
+  if (finishReason !== 'STOP') {
+    throw new Error(`Ucięta odpowiedź od Gemini (finishReason=${finishReason || 'brak'}).`);
+  }
   const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
   if (!text) throw new Error('Pusta odpowiedź od Gemini API');
   return text;
+}
+
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function generateWithRetry(generate, parse) {
+  const MAX_GENERATION_ATTEMPTS = 3;
+  let lastError;
+  for (let attempt = 1; attempt <= MAX_GENERATION_ATTEMPTS; attempt++) {
+    try {
+      return parse(await generate());
+    } catch (error) {
+      lastError = error;
+      if (error.geminiPermanent) throw error;
+      if (attempt < MAX_GENERATION_ATTEMPTS) {
+        console.warn(`⚠️  Błąd przejściowy Gemini: ${error.message}`);
+        console.log(`🔄 Ponawiam generowanie za 20 s (${attempt + 1}/${MAX_GENERATION_ATTEMPTS})...`);
+        await wait(20_000);
+      }
+    }
+  }
+  throw lastError;
 }
 
 function parseGeneratedFAQ(raw) {
@@ -223,121 +258,108 @@ function updateFAQSchema(html, faq) {
 async function main() {
   const today = new Date().toISOString().split('T')[0];
   console.log(`\n📅 ${today} | CalmDriver FAQ Generator`);
-
-  if (!fs.existsSync(INDEX_PATH)) {
-    console.error(`❌ Nie znaleziono pliku: ${INDEX_PATH}`);
+  try {
+    syncBeforeGenerate({ root: PROJECT_ROOT, branch: GIT_BRANCH });
+  } catch (error) {
+    console.error(`❌ Nie można rozpocząć publikacji: ${error.message}`);
     process.exit(1);
   }
 
-  let html = fs.readFileSync(INDEX_PATH, 'utf-8');
-  const existingQuestions = getExistingQuestions(html);
-  console.log(`ℹ Istniejące pytania FAQ: ${existingQuestions.length}`);
-
-  const MAX_RETRIES = 5;
-  const skippedKeywords = [];
-  let faq = null;
-  let usedKeyword = null;
-
-  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-    const nextKeyword = getNextKeyword(skippedKeywords);
-    usedKeyword = nextKeyword;
-
-    if (nextKeyword) {
-      console.log(`🎯 Fraza z kolejki (priorytet ${nextKeyword.priority}): "${nextKeyword.keyword}"`);
-    } else {
-      console.log('📝 Kolejka fraz pusta — wybieram temat autonomicznie');
-    }
-
-    console.log('🤖 Generuję pytanie FAQ przez Gemini API...');
-    let raw;
-    try {
-      raw = await generateFAQ(existingQuestions, nextKeyword?.keyword || null);
-    } catch (err) {
-      console.error('❌ Błąd Gemini API:', err.message);
-      process.exit(1);
-    }
-
-    let parsed;
-    try {
-      parsed = parseGeneratedFAQ(raw);
-    } catch (err) {
-      console.error('❌ Błąd parsowania:', err.message);
-      process.exit(1);
-    }
-
-    if (isDuplicate(parsed.question_pl, existingQuestions)) {
-      console.warn(`⚠️  Pytanie "${parsed.question_pl}" zbyt podobne do istniejącego.`);
-      if (nextKeyword) {
-        markKeywordStatus(nextKeyword.keyword, 'skipped');
-        skippedKeywords.push(nextKeyword.keyword);
-        console.log(`🔄 Próbuję kolejną frazę (próba ${attempt}/${MAX_RETRIES})...`);
-      } else {
-        console.log(`🔄 Próbuję ponownie autonomicznie (próba ${attempt}/${MAX_RETRIES})...`);
-      }
-      faq = null;
-      continue;
-    }
-
-    faq = parsed;
-    break;
-  }
-
-  if (!faq) {
-    console.warn(`⚠️  Nie udało się wygenerować unikalnego pytania po ${MAX_RETRIES} próbach.`);
-    process.exit(0);
-  }
-
-  console.log(`✅ Pytanie: "${faq.question_pl}"`);
-
-  // Inject into HTML
   try {
+    if (!fs.existsSync(INDEX_PATH)) throw new Error(`Nie znaleziono pliku: ${INDEX_PATH}`);
+
+    let html = fs.readFileSync(INDEX_PATH, 'utf-8');
+    const existingQuestions = getExistingQuestions(html);
+    console.log(`ℹ Istniejące pytania FAQ: ${existingQuestions.length}`);
+
+    const MAX_RETRIES = 5;
+    const skippedKeywords = [];
+    let faq = null;
+    let usedKeyword = null;
+
+    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+      const nextKeyword = getNextKeyword(skippedKeywords);
+      usedKeyword = nextKeyword;
+
+      if (nextKeyword) {
+        console.log(`🎯 Fraza z kolejki (priorytet ${nextKeyword.priority}): "${nextKeyword.keyword}"`);
+      } else {
+        console.log('📝 Kolejka fraz pusta — wybieram temat autonomicznie');
+      }
+
+      console.log('🤖 Generuję pytanie FAQ przez Gemini API...');
+      const parsed = await generateWithRetry(
+        () => generateFAQ(existingQuestions, nextKeyword?.keyword || null),
+        parseGeneratedFAQ,
+      );
+
+      if (isDuplicate(parsed.question_pl, existingQuestions)) {
+        console.warn(`⚠️  Pytanie "${parsed.question_pl}" zbyt podobne do istniejącego.`);
+        if (nextKeyword) {
+          markKeywordStatus(nextKeyword.keyword, 'skipped');
+          skippedKeywords.push(nextKeyword.keyword);
+          console.log(`🔄 Próbuję kolejną frazę (próba ${attempt}/${MAX_RETRIES})...`);
+        } else {
+          console.log(`🔄 Próbuję ponownie autonomicznie (próba ${attempt}/${MAX_RETRIES})...`);
+        }
+        faq = null;
+        continue;
+      }
+
+      faq = parsed;
+      break;
+    }
+
+    const publishSkippedQueue = () => {
+      if (skippedKeywords.length === 0) return;
+      const gitEnv = {
+        ...process.env,
+        GIT_AUTHOR_NAME,
+        GIT_AUTHOR_EMAIL,
+        GIT_COMMITTER_NAME: GIT_AUTHOR_NAME,
+        GIT_COMMITTER_EMAIL: GIT_AUTHOR_EMAIL,
+      };
+      commitAndPush({ root: PROJECT_ROOT, branch: GIT_BRANCH, files: ['scripts/faq-queue.json'],
+        message: `chore(queue): pominięte duplikaty (${skippedKeywords.length})`, env: gitEnv, regenerate: regenerateSitemap });
+      console.log('📦 Opublikowano status pominiętych fraz w kolejce.');
+    };
+
+    if (!faq) {
+      console.warn(`⚠️  Nie udało się wygenerować unikalnego pytania po ${MAX_RETRIES} próbach.`);
+      publishSkippedQueue();
+      return;
+    }
+
+    console.log(`✅ Pytanie: "${faq.question_pl}"`);
+
     html = injectFAQItem(html, faq);
     html = updateFAQSchema(html, faq);
-  } catch (err) {
-    console.error('❌ Błąd wstrzykiwania do HTML:', err.message);
-    process.exit(1);
-  }
 
-  fs.writeFileSync(INDEX_PATH, html, 'utf-8');
-  console.log('📝 faq/index.html zaktualizowany');
+    fs.writeFileSync(INDEX_PATH, html, 'utf-8');
+    console.log('📝 faq/index.html zaktualizowany');
 
-  // Regenerate sitemap
-  regenerateSitemap();
+    regenerateSitemap();
 
-  // Git commit & push
-  const gitEnv = {
-    ...process.env,
-    GIT_AUTHOR_NAME,
-    GIT_AUTHOR_EMAIL,
-    GIT_COMMITTER_NAME: GIT_AUTHOR_NAME,
-    GIT_COMMITTER_EMAIL: GIT_AUTHOR_EMAIL,
-  };
-
-  const commitMsg = `feat(faq): ${faq.question_pl.substring(0, 72)}`;
-
-  try {
-    execSync(`git -C "${PROJECT_ROOT}" pull --rebase --autostash origin ${GIT_BRANCH}`, { stdio: 'pipe' });
+    const gitEnv = {
+      ...process.env,
+      GIT_AUTHOR_NAME,
+      GIT_AUTHOR_EMAIL,
+      GIT_COMMITTER_NAME: GIT_AUTHOR_NAME,
+      GIT_COMMITTER_EMAIL: GIT_AUTHOR_EMAIL,
+    };
 
     if (usedKeyword) markKeywordStatus(usedKeyword.keyword, 'done');
-
-    execSync(`git -C "${PROJECT_ROOT}" add "app/faq/index.html" "app/sitemap.xml"`, { stdio: 'pipe' });
+    const files = ['app/faq/index.html', 'app/sitemap.xml'];
     if (usedKeyword || skippedKeywords.length > 0) {
-      execSync(`git -C "${PROJECT_ROOT}" add "scripts/faq-queue.json"`, { stdio: 'pipe' });
+      files.push('scripts/faq-queue.json');
     }
-    execSync(`git -C "${PROJECT_ROOT}" commit -m "${commitMsg}"`, { env: gitEnv, stdio: 'pipe' });
-    console.log('📦 Commit utworzony');
-
-    execSync(`git -C "${PROJECT_ROOT}" push origin ${GIT_BRANCH}`, { stdio: 'inherit' });
+    commitAndPush({ root: PROJECT_ROOT, branch: GIT_BRANCH, files,
+      message: `feat(faq): ${faq.question_pl.substring(0, 72)}`, env: gitEnv, regenerate: regenerateSitemap });
     console.log('🚀 Wypchnięto do GitHub → CI/CD zadeplojuje automatycznie');
     console.log(`🎉 Gotowe! Pytanie "${faq.question_pl}" niedługo będzie live.\n`);
-
-  } catch (err) {
-    console.error('❌ Błąd git:', err.message);
-    // Rollback HTML
-    try {
-      execSync(`git -C "${PROJECT_ROOT}" checkout -- app/faq/index.html`, { stdio: 'pipe' });
-      console.log('🧹 index.html przywrócony (rollback).');
-    } catch {}
+  } catch (error) {
+    console.error(`❌ Błąd publikacji: ${error.message}`);
+    rollback({ root: PROJECT_ROOT, branch: GIT_BRANCH });
     process.exit(1);
   }
 }
