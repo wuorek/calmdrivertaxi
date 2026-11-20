@@ -21,11 +21,12 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { regenerateSitemap } from './update-sitemap.mjs';
 import { commitAndPush, rollback, syncBeforeGenerate } from './git-publish.mjs';
+import { buildArticleHTML, sanitizeText } from './article-template.mjs';
+import { rebuildBlog } from './rebuild-blog.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const BLOG_DIR = path.join(PROJECT_ROOT, 'app', 'blog');
-const BLOG_INDEX_PATH = path.join(BLOG_DIR, 'index.html');
 const ARTICLES_INDEX_PATH = path.join(__dirname, 'articles-index.json');
 const QUEUE_PATH = path.join(__dirname, 'articles-queue.json');
 
@@ -91,12 +92,6 @@ function slugify(title) {
     .substring(0, 70);
 }
 
-function formatDate(isoDate) {
-  const [y, m, d] = isoDate.split('-');
-  const months = ['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
-  return `${parseInt(d)} ${months[parseInt(m) - 1]} ${y}`;
-}
-
 function isDuplicate(newTitle, existingArticles) {
   const stopwords = new Set(['w','i','z','na','do','jak','ile','co','za','od','po','się','nie','jest','to','czy','oraz','lub','dla','przez','przy','też','już','ten','ta','te','tego','tej','tym','jako','białystok','białymstoku']);
   const tokenize = t => t.toLowerCase()
@@ -114,20 +109,6 @@ function isDuplicate(newTitle, existingArticles) {
   });
 }
 
-function getLandingPageForTopic(topic) {
-  const normalized = topic.toLowerCase();
-  if (/free\s*now|freenow/.test(normalized)) {
-    return { href: '/praca-kierowca-freenow-bialystok/', label: 'Zacznij jeździć we FreeNow' };
-  }
-  if (/uber/.test(normalized)) {
-    return { href: '/praca-kierowca-uber-bialystok/', label: 'Zacznij jeździć z Uberem' };
-  }
-  if (/wynajem|koszt(?:y)? auta|auto/.test(normalized)) {
-    return { href: '/wynajem-auta-pod-taxi-bialystok/', label: 'Sprawdź wynajem auta pod taxi' };
-  }
-  return { href: '/praca-kierowca-bolt-bialystok/', label: 'Zacznij jeździć w Bolt' };
-}
-
 // ── Gemini API ────────────────────────────────────────────────────────────────
 
 async function generateArticle(existingArticles, targetKeyword = null) {
@@ -135,7 +116,7 @@ async function generateArticle(existingArticles, targetKeyword = null) {
   const currentYear = new Date().getFullYear();
 
   const existingList = existingArticles.length > 0
-    ? existingArticles.map((a, i) => `${i + 1}. ${a.title}`).join('\n')
+    ? existingArticles.map((a, i) => `${i + 1}. ${a.title} (/blog/${a.slug}.html)`).join('\n')
     : '(brak – to będzie pierwszy artykuł)';
 
   const keywordSection = targetKeyword
@@ -150,8 +131,18 @@ ZASADY DOBORU TEMATU (obowiazkowe):
 
   const prompt = `Jesteś doświadczonym kierowcą i ekspertem od pracy na platformach Bolt, Uber i FreeNow w Białymstoku. Piszesz poradnik dla ludzi, którzy rozważają tę pracę lub dopiero zaczynają. Twój cel: dać czytelnikowi REALNĄ WARTOŚĆ — odpowiedzieć na jego pytanie lepiej niż jakikolwiek inny artykuł w internecie.
 
-ISTNIEJĄCE ARTYKUŁY – NIE POWTARZAJ TEMATÓW:
+ISTNIEJĄCE ARTYKUŁY – NIE POWTARZAJ TEMATÓW (podany jest tytuł i adres):
 ${existingList}
+
+STRONY DOCELOWE (oferta i FAQ):
+- /praca-kierowca-bolt-bialystok/
+- /praca-kierowca-uber-bialystok/
+- /praca-kierowca-freenow-bialystok/
+- /wynajem-auta-pod-taxi-bialystok/
+- /praca-dla-studenta-bialystok/
+- /faq/
+
+LINKI WEWNĘTRZNE (obowiązkowe): w treści artykułu umieść 2-3 naturalne linki kontekstowe (<a href="...">) do NAJBARDZIEJ pasujących tematycznie istniejących artykułów (adresy z listy powyżej) lub stron docelowych. Używaj dokładnie podanych adresów, tekst linku ma być opisowy (nie "kliknij tutaj"). Nie linkuj do artykułu, którego dopiero piszesz.
 
 ${keywordSection}
 
@@ -169,6 +160,7 @@ GŁOS I STYL:
 - Szczerość: mów co jest trudne, gdzie są pułapki, czego nikt nie mówi
 - Każde zdanie niesie informację — zero wypełniaczy i ogólników
 - Nie używaj: "kompleksowo", "profesjonalnie", "najwyższa jakość", "niezwykle ważny", "od podszewki"
+- ZAKAZ znaków "—" (długi myślnik) i "–" (średni myślnik): używaj wyłącznie zwykłego "-". ZAKAZ emoji i symboli graficznych
 - Unikaj powtarzalnej struktury — zaskocz czytelnika ciekawym wstępem, nietypowym ujęciem tematu
 - Dodaj konkretne przykłady, scenariusze, obliczenia, porównania
 
@@ -177,11 +169,15 @@ ELEMENTY LOKALNE (wpleć 2-3 naturalnie, NIE wszystkie na raz):
 - Osiedla: Piasta, Antoniuk, Słoneczny Stok, Bojary, Nowe Miasto, Skorupy
 - Specyfika: miasto studenckie (UwB, Politechnika), mniejszy rynek niż Warszawa ale mniej konkurencji
 
-DANE (użyj gdzie pasują, NIE wciskaj wszystkich):
-- Zarobki: 18-28 zł/h netto na start, 25-38 zł/h dla doświadczonych (${currentYear})
+DANE (użyj gdzie pasują, NIE wciskaj wszystkich; ceny i warunki podawaj dokładnie tak, jak niżej):
+- Zarobki: ok. 40 zł/h na konto po prowizji aplikacji (${currentYear}). Szacunek, nie gwarancja
 - Platformy: Bolt (dominujący w Białymstoku), Uber, FreeNow
 - Prowizja platform: Bolt ~25%, Uber ~25%, FreeNow ~15-20%
-- Koszty paliwa: ~1,5-2 zł/km przy jeździe w mieście
+- Własne auto u CalmDriver: 40 zł/tydz. za obsługę rozliczeń, 0% prowizji od obrotu, VAT 8% od obrotu to podatek, nie opłata CalmDriver
+- Wynajem auta: Skoda Fabia od 350 zł/tydz., Kia Venga od 400 zł/tydz., Dacia Sandero od 500 zł/tydz.; kaucja zwrotna 1000 zł; ubezpieczenie, serwis i przeglądy w cenie (NIE pisz "OC/AC")
+- Oferta studencka: 250 zł za pierwszy tydzień wynajmu, TYLKO dla ucznia, studenta lub doktoranta do 26 lat z ważną legitymacją; od 2. tygodnia zwykły cennik. Zawsze pisz, że 250 zł dotyczy ucznia lub studenta do 26 lat
+- Umowa zlecenie bez własnej firmy; do 26 lat uczeń i student nie płaci ZUS, a każdy do 26 lat nie płaci PIT do 85 528 zł przychodu rocznie
+- Nie wspominaj o paliwie ani kosztach paliwa
 - Rejestracja: 1-2 dni robocze z fleet partnerem, samodzielnie 1-2 tygodnie
 
 STRUKTURA:
@@ -189,7 +185,7 @@ STRUKTURA:
 - 4-6 sekcji H2 — każda odpowiada na osobne podpytanie
 - Mieszaj formaty: akapity, listy punktowane, porównania, przykłady liczbowe
 - NIE kończ każdej sekcji odniesieniem do CalmDriver
-- Jeśli temat tego wymaga, dodaj link do /faq/ w treści (jako <a href="/faq/">FAQ</a>)
+- Jeśli temat tego wymaga, dodaj też link do /faq/ w treści (jako <a href="/faq/">FAQ</a>)
 
 DŁUGOŚĆ: 900-1300 słów
 
@@ -281,303 +277,26 @@ function parseGeneratedArticle(raw) {
   }
 
   return {
-    title,
-    excerpt,
-    category: category || 'Porady',
+    title: sanitizeText(title),
+    excerpt: sanitizeText(excerpt),
+    category: sanitizeText(category || 'Porady'),
     readTime: readTime || '5 min',
     date: date || new Date().toISOString().split('T')[0],
-    body,
+    body: sanitizeText(body),
   };
 }
 
-// ── Article HTML Builder ──────────────────────────────────────────────────────
+// ── Publikacja ────────────────────────────────────────────────────────────────
 
-function buildRelatedLinks(currentSlug, existingArticles) {
-  const others = existingArticles
-    .filter(a => a.slug !== currentSlug)
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 2);
-
-  const links = others.map(a =>
-    `<a href="/blog/${a.slug}.html">${a.title}</a>`
-  );
-  links.push('<a href="/faq/">FAQ — Najczęściej zadawane pytania</a>');
-  return links.join('\n      ');
-}
-
-function buildArticleHTML(article, slug, existingArticles = []) {
-  const { title, excerpt, category, readTime, date, body } = article;
-  const formattedDate = formatDate(date);
-  const canonicalUrl = `https://calmdriver.pl/blog/${slug}.html`;
-  const relatedLinks = buildRelatedLinks(slug, existingArticles);
-  const landingPage = getLandingPageForTopic(title);
-
-  return `<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${title} | CalmDriver</title>
-  <meta name="description" content="${excerpt}" />
-  <link rel="canonical" href="${canonicalUrl}" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="${canonicalUrl}" />
-  <meta property="og:title" content="${title}" />
-  <meta property="og:description" content="${excerpt}" />
-  <meta property="og:image" content="https://calmdriver.pl/og-image.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "${title.replace(/"/g, '\\"')}",
-    "description": "${excerpt.replace(/"/g, '\\"')}",
-    "datePublished": "${date}",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CalmDriver Taxi",
-      "url": "https://calmdriver.pl"
-    }
-  }
-  </script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #07070d; --surface: #0e0e18; --card: #13131f;
-      --border: #1f1f35; --border2: #2a2a45;
-      --gold: #f5c518; --gold2: #ffd84d; --gold-dim: rgba(245,197,24,0.12);
-      --green: #00d4a0; --text: #f0f0fa; --muted: #7070a0; --muted2: #9090b8;
-      --radius: 16px;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg); color: var(--text);
-      overflow-x: hidden; line-height: 1.6;
-    }
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      padding: 0 clamp(20px, 5vw, 80px); height: 70px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(7,7,13,0.95); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo-icon { width: 36px; height: 36px; background: var(--gold); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; }
-    .nav-logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--text); }
-    .nav-logo-text span { color: var(--gold); }
-    .nav-right { display: flex; align-items: center; gap: 20px; }
-    .nav-right a { color: var(--muted2); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
-    .nav-right a:hover { color: var(--text); }
-    .nav-cta { padding: 8px 20px; background: var(--gold); color: #000 !important; border-radius: 8px; font-weight: 700; font-size: 0.85rem; }
-    .nav-cta:hover { background: var(--gold2) !important; }
-
-    .article-wrap {
-      max-width: 740px; margin: 0 auto;
-      padding: 60px clamp(20px, 5vw, 40px) 100px;
-    }
-    .article-back {
-      display: inline-flex; align-items: center; gap: 6px;
-      color: var(--muted2); text-decoration: none; font-size: 0.875rem; font-weight: 500;
-      margin-bottom: 40px; transition: color 0.2s;
-    }
-    .article-back:hover { color: var(--gold); }
-    .article-meta {
-      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .article-cat {
-      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;
-      color: var(--gold); background: var(--gold-dim);
-      border: 1px solid rgba(245,197,24,0.2); border-radius: 6px; padding: 3px 10px;
-    }
-    .article-time { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
-    .article-date { font-size: 0.78rem; color: var(--muted); }
-    .article-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.7rem, 4vw, 2.6rem);
-      font-weight: 800; letter-spacing: -1.5px; line-height: 1.15;
-      margin-bottom: 20px;
-    }
-    .article-excerpt {
-      font-size: 1.1rem; color: var(--muted2); line-height: 1.75;
-      padding-bottom: 36px; border-bottom: 1px solid var(--border);
-      margin-bottom: 44px;
-    }
-    .article-body h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px;
-      color: var(--text); margin: 44px 0 16px;
-      padding-left: 16px; border-left: 3px solid var(--gold);
-    }
-    .article-body p { color: var(--muted2); line-height: 1.8; margin-bottom: 18px; font-size: 1rem; }
-    .article-body p:last-child { margin-bottom: 0; }
-    .article-body strong { color: var(--text); font-weight: 600; }
-    .article-body ul, .article-body ol { color: var(--muted2); padding-left: 20px; margin-bottom: 18px; }
-    .article-body li { margin-bottom: 8px; line-height: 1.75; font-size: 1rem; }
-    .article-body a { color: var(--gold); text-decoration: none; font-weight: 500; }
-    .article-body a:hover { text-decoration: underline; }
-
-    .related-posts {
-      margin-top: 50px; padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-    .related-posts h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; color: var(--muted2);
-    }
-    .related-posts-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-    }
-    .related-posts-grid a {
-      display: block; padding: 16px 20px;
-      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-      text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 600;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .related-posts-grid a:hover { border-color: var(--gold); transform: translateY(-2px); }
-    @media (max-width: 600px) { .related-posts-grid { grid-template-columns: 1fr; } }
-
-    .article-cta {
-      margin-top: 60px; padding: 36px;
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-      text-align: center;
-    }
-    .article-cta h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.3rem; font-weight: 800; margin-bottom: 10px;
-    }
-    .article-cta h3 span { color: var(--gold); }
-    .article-cta p { color: var(--muted2); margin-bottom: 24px; font-size: 0.95rem; }
-    .article-cta a {
-      display: inline-block; padding: 14px 32px;
-      background: var(--gold); color: #000;
-      font-weight: 800; font-size: 0.95rem; border-radius: 10px;
-      text-decoration: none; transition: background 0.2s, transform 0.2s;
-    }
-    .article-cta a:hover { background: var(--gold2); transform: translateY(-1px); }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px clamp(20px, 5vw, 80px);
-      display: flex; flex-wrap: wrap;
-      align-items: center; justify-content: space-between; gap: 16px;
-    }
-    .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-    .footer-logo-icon { width: 30px; height: 30px; background: var(--gold); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
-    .footer-logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text); }
-    .footer-logo-text span { color: var(--gold); }
-    .footer-copy { color: var(--muted); font-size: 0.8rem; }
-    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a { color: var(--muted2); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--gold); }
-
-    @media (max-width: 600px) { .nav-right a:not(.nav-cta) { display: none; } }
-  </style>
-</head>
-<body>
-
-<nav>
-  <a href="/" class="nav-logo">
-    <div class="nav-logo-icon">🚕</div>
-    <div class="nav-logo-text">Calm<span>Driver</span></div>
-  </a>
-  <div class="nav-right">
-    <a href="/blog/">← Blog</a>
-    <a href="/">Strona główna</a>
-    <a href="/#contact" class="nav-cta">Dołącz teraz</a>
-  </div>
-</nav>
-
-<article class="article-wrap">
-  <a href="/blog/" class="article-back">← Wszystkie artykuły</a>
-
-  <div class="article-meta">
-    <span class="article-cat">${category}</span>
-    <span class="article-time">${readTime} czytania</span>
-    <span class="article-date">${formattedDate}</span>
-  </div>
-
-  <h1 class="article-title">${title}</h1>
-  <p class="article-excerpt">${excerpt}</p>
-
-  <div class="article-body">
-    ${body}
-  </div>
-
-  <div class="related-posts">
-    <h3>Przeczytaj też:</h3>
-    <div class="related-posts-grid">
-      ${relatedLinks}
-    </div>
-  </div>
-
-  <div class="article-cta">
-    <h3>Gotowy żeby <span>zacząć zarabiać?</span></h3>
-    <p>Skontaktuj się z CalmDriver — pomożemy Ci przejść rejestrację i ruszyć z pierwszymi zleceniami w Białymstoku.</p>
-    <a href="${landingPage.href}">${landingPage.label} →</a>
-  </div>
-</article>
-
-<footer>
-  <a href="/" class="footer-logo">
-    <div class="footer-logo-icon">🚕</div>
-    <div class="footer-logo-text">Calm<span>Driver</span> Taxi</div>
-  </a>
-  <div class="footer-copy">© 2026 CalmDriver Taxi · Białystok</div>
-  <div class="footer-links">
-    <a href="/blog/">Blog</a>
-    <a href="/">Strona główna</a>
-    <a href="/#contact">Kontakt</a>
-    <a href="/taxi-bialystok/">Taxi Białystok</a>
-    <a href="tel:+48739980388">📞 739 980 388</a>
-  </div>
-</footer>
-
-</body>
-</html>`;
-}
-
-// ── Blog Index Regeneration ───────────────────────────────────────────────────
-
-function buildBlogCard(article) {
-  const { title, excerpt, category, readTime, date, slug } = article;
-  const formattedDate = formatDate(date);
-  return `    <a href="/blog/${slug}.html" class="blog-card">
-      <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span class="blog-card-cat">${category}</span>
-          <span class="blog-card-time">${readTime} czytania</span>
-          <span class="blog-card-date">${formattedDate}</span>
-        </div>
-        <h2>${title}</h2>
-        <p>${excerpt}</p>
-      </div>
-      <div class="blog-card-footer">Czytaj artykuł →</div>
-    </a>`;
-}
-
-function regenerateBlogIndex(articles) {
-  let html = fs.readFileSync(BLOG_INDEX_PATH, 'utf-8');
-
-  const sorted = [...articles].sort((a, b) => b.date.localeCompare(a.date));
-
-  const cardsHTML = sorted.length > 0
-    ? `  <div class="blog-grid">\n${sorted.map(buildBlogCard).join('\n')}\n  </div>`
-    : `  <div class="blog-empty">
-    <p>Pierwsze artykuły pojawią się wkrótce.</p>
-    <a href="/">← Wróć na stronę główną</a>
-  </div>`;
-
-  html = html.replace(
-    /<!-- BLOG_CARDS_START -->[\s\S]*?<!-- BLOG_CARDS_END -->/,
-    `<!-- BLOG_CARDS_START -->\n${cardsHTML}\n  <!-- BLOG_CARDS_END -->`
-  );
-
-  fs.writeFileSync(BLOG_INDEX_PATH, html, 'utf-8');
+/**
+ * Lista plików do commita: nowy artykuł, wszystkie pliki zmienione przez
+ * rebuildBlog() (artykuły z odświeżonymi powiązanymi linkami, blog/index.html,
+ * articles-index.json), sitemap i ewentualnie kolejka fraz.
+ */
+function buildPublishFiles(articleRelativePath, rebuiltFiles, includeQueue) {
+  const files = new Set([articleRelativePath, ...rebuiltFiles, 'app/blog/index.html', 'app/sitemap.xml', 'scripts/articles-index.json']);
+  if (includeQueue) files.add('scripts/articles-queue.json');
+  return [...files];
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
@@ -665,18 +384,20 @@ async function main() {
       return;
     }
 
-    const articleHTML = buildArticleHTML(article, slug, index.articles);
+    const indexEntry = { slug, title: article.title, excerpt: article.excerpt, category: article.category, readTime: article.readTime, date: article.date };
+    const articleHTML = buildArticleHTML({ ...article, slug }, [...index.articles, indexEntry]);
     createdFiles = [articleRelativePath];
     fs.writeFileSync(articlePath, articleHTML, 'utf-8');
   console.log(`✅ Artykuł zapisany: app/blog/${slug}.html`);
   console.log(`   Tytuł:    ${article.title}`);
   console.log(`   Kategoria: ${article.category} | Czas: ${article.readTime}`);
 
-    index.articles.push({ slug, title: article.title, excerpt: article.excerpt, category: article.category, readTime: article.readTime, date: article.date });
+    index.articles.push(indexEntry);
     saveArticlesIndex(index);
 
-    regenerateBlogIndex(index.articles);
-  console.log('📝 blog/index.html zaktualizowany');
+    // Przelicza powiązane linki we wszystkich artykułach i odtwarza blog/index.html
+    const rebuiltFiles = rebuildBlog();
+  console.log(`📝 Blog przebudowany (zmienionych plików: ${rebuiltFiles.length})`);
 
     regenerateSitemap();
 
@@ -689,10 +410,7 @@ async function main() {
     };
 
     if (usedKeyword) markKeywordStatus(usedKeyword.keyword, 'done');
-    const files = [articleRelativePath, 'app/blog/index.html', 'app/sitemap.xml', 'scripts/articles-index.json'];
-    if (usedKeyword || skippedKeywords.length > 0) {
-      files.push('scripts/articles-queue.json');
-    }
+    const files = buildPublishFiles(articleRelativePath, rebuiltFiles, Boolean(usedKeyword) || skippedKeywords.length > 0);
     commitAndPush({ root: PROJECT_ROOT, branch: GIT_BRANCH, files,
       message: `feat(blog): ${article.title.substring(0, 72)}`, env: gitEnv, regenerate: regenerateSitemap });
     console.log('🚀 Wypchnięto do GitHub → CI/CD zadeplojuje automatycznie');

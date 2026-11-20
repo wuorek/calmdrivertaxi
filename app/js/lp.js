@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   CalmDriver — obsługa formularzy na stronach docelowych.
+   CalmDriver - obsługa formularzy na stronach docelowych.
    Każdy <form class="lp-form"> wysyła POST /api/contact.
    API wymaga: name, phone, interest. Reszta pól jest opcjonalna.
    Ukryte pole "source" dopisujemy do wiadomości, żeby w mailu
@@ -20,12 +20,12 @@
       // źródło zgłoszenia dopisane do treści wiadomości
       const source = form.dataset.source || document.title;
       body.message = body.message
-        ? body.message + '\n\n— zgłoszenie ze strony: ' + source
+        ? body.message + '\n\n- zgłoszenie ze strony: ' + source
         : 'Zgłoszenie ze strony: ' + source;
 
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = 'Wysyłanie…';
+        btn.innerHTML = 'Wysyłanie...';
       }
       if (msg) {
         msg.className = 'form-msg';
@@ -43,13 +43,13 @@
 
         if (msg) {
           msg.className = 'form-msg success';
-          msg.textContent = '✅ Dziękujemy! Oddzwonimy jeszcze dziś.';
+          msg.textContent = 'Dziękujemy! Oddzwonimy jeszcze dziś.';
         }
         form.reset();
       } catch (err) {
         if (msg) {
           msg.className = 'form-msg error';
-          msg.textContent = '❌ Nie udało się wysłać. Zadzwoń: 739 980 388';
+          msg.textContent = 'Nie udało się wysłać. Zadzwoń: 739 980 388';
         }
       }
 

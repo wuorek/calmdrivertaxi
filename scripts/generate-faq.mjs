@@ -64,7 +64,7 @@ function markKeywordStatus(keyword, status = 'done') {
 // ── HTML Parsing ──────────────────────────────────────────────────────────────
 
 function getExistingQuestions(html) {
-  const matches = [...html.matchAll(/<span>([^<]+)<\/span>\s*<span class="faq-icon">/g)];
+  const matches = [...html.matchAll(/<summary>([^<]+)<\/summary>/g)];
   return matches.map(m => m[1].trim());
 }
 
@@ -111,6 +111,8 @@ ZASADY:
 - Odpowiedź EN: wierne tłumaczenie, naturalne po angielsku
 - Nie używaj: "kompleksowo", "profesjonalnie", "najwyższa jakość"
 - Możesz użyć <strong> dla kluczowych wartości liczbowych
+- Nie używaj znaków "—" (długa pauza) i "–" (półpauza); zamiast nich używaj zwykłego "-"
+- Nie używaj emoji ani emotikon
 
 ZWRÓĆ WYŁĄCZNIE JSON (bez markdown, bez tekstu przed/po):
 {
@@ -177,6 +179,10 @@ async function generateWithRetry(generate, parse) {
   throw lastError;
 }
 
+function normalizeDashes(text) {
+  return String(text).replace(/[\u2013\u2014]/g, '-');
+}
+
 function parseGeneratedFAQ(raw) {
   const cleaned = raw
     .replace(/^```(?:json)?\s*\n?/im, '')
@@ -195,7 +201,12 @@ function parseGeneratedFAQ(raw) {
     throw new Error('Brakujące pola w odpowiedzi JSON: ' + JSON.stringify(parsed).substring(0, 300));
   }
 
-  return { question_pl, question_en, answer_pl, answer_en };
+  return {
+    question_pl: normalizeDashes(question_pl),
+    question_en: normalizeDashes(question_en),
+    answer_pl: normalizeDashes(answer_pl),
+    answer_en: normalizeDashes(answer_en),
+  };
 }
 
 // ── HTML Injection ────────────────────────────────────────────────────────────
@@ -204,17 +215,10 @@ const FAQ_ITEM_MARKER = '\n  <!-- FAQ_ITEMS_END -->';
 
 function buildFAQItemHTML({ question_pl, answer_pl }) {
   return `
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>${question_pl}</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer" role="region">
-        <div class="faq-answer-inner">
-          ${answer_pl}
-        </div>
-      </div>
-    </div>
+    <details>
+      <summary>${question_pl}</summary>
+      <p>${answer_pl}</p>
+    </details>
 `;
 }
 
