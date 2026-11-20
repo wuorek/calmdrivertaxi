@@ -61,9 +61,7 @@
 <main>
 
   <div class="container">
-    <nav class="breadcrumb" aria-label="Okruszki" style="margin: 20px 0 0">
-      <a href="/">Start</a> / Wynajem auta pod taxi
-    </nav>
+    <nav class="breadcrumb is-top" aria-label="Ścieżka nawigacji"><a href="/">Strona główna</a> &rsaquo; Wynajem auta pod taxi</nav>
 
     <!-- HERO -->
     <section class="hero">
@@ -88,9 +86,9 @@
       </div>
 
       <!-- FORMULARZ (2 pola) -->
-      <div class="calc-box" id="rent-form">
-        <h2 style="font-weight: 800; font-size: 24px; margin-bottom: 6px">Oddzwonimy jeszcze dziś</h2>
-        <p class="section-note" style="margin: 0 0 18px">Dwa pola, 15 sekund. Resztę ustalimy przez telefon.</p>
+      <div class="hero-form" id="rent-form">
+        <h2>Oddzwonimy jeszcze dziś</h2>
+        <p class="sub">Dwa pola, 15 sekund. Resztę ustalimy przez telefon.</p>
         <form class="lp-form form" data-source="Wynajem auta pod taxi Białystok" novalidate>
           <input type="hidden" name="interest" value="rental" />
           <div class="field">
@@ -102,7 +100,7 @@
             <input type="tel" id="rent-phone" name="phone" placeholder="739 000 000" required autocomplete="tel" />
           </div>
           <button type="submit" class="btn btn-primary btn-block">Oddzwońcie do mnie</button>
-          <p class="calc-note" style="margin: 0">Bez spamu. Dzwonimy raz - jeśli nie odbierzesz, piszemy SMS.</p>
+          <p class="form-note">Bez spamu. Dzwonimy raz - jeśli nie odbierzesz, piszemy SMS.</p>
           <div class="form-msg" role="status" aria-live="polite"></div>
         </form>
       </div>
@@ -116,7 +114,7 @@
     </div>
     <p class="section-lead">Wynajmij auto z naszej floty i zacznij zarabiać bez zbędnych formalności. Auta są już aktywowane na platformach Bolt, Uber i FreeNow. Rozliczenie tygodniowe, kaucja 1000 zł (zwrotna).</p>
 
-    <div class="fleet-grid" style="margin-top: 28px">
+    <div class="fleet-grid">
       <figure class="fleet-card">
         <img src="/img/flota-skoda-fabia.jpg" width="1200" height="541" alt="Skoda Fabia z floty CalmDriver - wynajem auta taxi Białystok" loading="lazy" />
         <figcaption>
@@ -147,31 +145,31 @@
     <p class="section-lead">Żadnych opłat, o których dowiesz się później. To jest pełna lista tego, co płacisz.</p>
 
     <div class="rent-table">
-      <h3 style="font-weight: 800; font-size: 20px; margin-bottom: 8px">Warunki wynajmu - Białystok, rozliczenie tygodniowe</h3>
+      <h3 class="subhead">Warunki wynajmu - Białystok, rozliczenie tygodniowe</h3>
       <table class="price-table">
         <tbody>
           <tr>
-            <td>Wynajem standardowy<br /><span class="small">Zależnie od modelu auta: Skoda Fabia od 350 zł, Kia Venga od 400 zł, Dacia Sandero od 500 zł</span></td>
+            <td>Wynajem standardowy <span class="small">Zależnie od modelu auta: Skoda Fabia od 350 zł, Kia Venga od 400 zł, Dacia Sandero od 500 zł</span></td>
             <td>350-500 zł / tydz.</td>
           </tr>
           <tr>
-            <td>Kaucja<br /><span class="small">Jednorazowa, w pełni zwrotna przy zakończeniu współpracy</span></td>
+            <td>Kaucja <span class="small">Jednorazowa, w pełni zwrotna przy zakończeniu współpracy</span></td>
             <td>1000 zł</td>
           </tr>
           <tr>
-            <td>Ubezpieczenie, serwis i przeglądy<br /><span class="small">W cenie wynajmu, po naszej stronie</span></td>
+            <td>Ubezpieczenie, serwis i przeglądy <span class="small">W cenie wynajmu, po naszej stronie</span></td>
             <td class="zero">0 zł</td>
           </tr>
           <tr>
-            <td>Licencja taxi i oklejenie<br /><span class="small">Auto ma już wszystko, czego wymagają platformy i miasto</span></td>
+            <td>Licencja taxi i oklejenie <span class="small">Auto ma już wszystko, czego wymagają platformy i miasto</span></td>
             <td class="zero">0 zł</td>
           </tr>
           <tr>
-            <td>Prowizja od Twojego obrotu<br /><span class="small">Nie bierzemy procentu od tego, co zarobisz</span></td>
+            <td>Prowizja od Twojego obrotu <span class="small">Nie bierzemy procentu od tego, co zarobisz</span></td>
             <td class="zero">0%</td>
           </tr>
           <tr>
-            <td>Pierwszy tydzień - tylko dla ucznia lub studenta do 26 lat<br /><span class="small">Cena próbna, od 2. tygodnia zwykły cennik. Pozostali płacą zwykłą cenę od 1. tygodnia. <a href="/praca-dla-studenta-bialystok/">Oferta dla studenta</a></span></td>
+            <td>Pierwszy tydzień - tylko dla ucznia lub studenta do 26 lat <span class="small">Cena próbna, od 2. tygodnia zwykły cennik. Pozostali płacą zwykłą cenę od 1. tygodnia. <a href="/praca-dla-studenta-bialystok/">Oferta dla studenta</a></span></td>
             <td>250 zł</td>
           </tr>
         </tbody>
@@ -220,9 +218,9 @@
     <div class="container">
       <h2 class="section-title">Auta stoją, a mogłyby zarabiać</h2>
       <p class="section-lead">Mamy wolne samochody od zaraz. Zadzwoń - powiemy wprost, ile realnie zarobisz w Twoim grafiku.</p>
-      <div class="hero-actions" style="margin-top: 24px">
+      <div class="hero-actions">
         <a href="tel:+48739980388" class="btn btn-primary">739 980 388</a>
-        <a href="https://wa.me/48739980388" class="btn btn-outline" style="border-color: var(--dark-text); color: var(--dark-text)" rel="noopener">WhatsApp</a>
+        <a href="https://wa.me/48739980388" class="btn btn-outline" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </section>
@@ -256,7 +254,7 @@
 
   <!-- FAQ -->
   <section class="container section">
-    <h2 class="section-title" style="margin-bottom: 24px">O co pytają najczęściej</h2>
+    <h2 class="section-title">O co pytają najczęściej</h2>
     <div class="faq">
       <details>
         <summary>Czy muszę mieć własną działalność gospodarczą?</summary>
@@ -294,8 +292,8 @@
   </section>
 
   <!-- LINKI WEWNĘTRZNE -->
-  <section class="container section" style="padding-bottom: 64px">
-    <h2 class="section-title" style="margin-bottom: 24px">Policz to na spokojnie</h2>
+  <section class="container section">
+    <h2 class="section-title">Policz to na spokojnie</h2>
     <ul class="post-list">
       <li>
         <div>

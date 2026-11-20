@@ -38,6 +38,31 @@ export function sanitizeText(text) {
   return normalizeDashes(stripEmoji(text));
 }
 
+/**
+ * Tytuł zdaniowo, po polsku: wielka litera tylko na początku zdania i w nazwach własnych.
+ * "Ile Naprawdę Zarobił" -> "Ile naprawdę zarobił", "co MUSISZ wiedzieć" -> "co musisz wiedzieć".
+ */
+const TITLE_KEEP = /^(Bolt|Bolta|Bolcie|Uber|Ubera|Uberze|FreeNow|Free|Now|CalmDriver|CalmDrivera|Białystok|Białymstoku|Białegostoku|Marek|Marka|Polska|Polsce|Polski|Ukrainy|Ukrainiec|Jagiellonii|Google|Android|Kia|Dacia|Skoda|Fabia|Venga|Sandero|Toyota|Prius|Corolla|UwB|PB|ZUS|PIT|VAT|OC|AC|NNW|UE|PKP|PKS|FAQ|GPS|SMS|BLIK|II|III|Ty|Ci|Cię|Ciebie|Tobie|Tobą|Twój|Twoja|Twoje|Twojego|Twojej|Twoim|Twoją|Twoich|Twoimi|Twoja)$/;
+export function sentenceCaseTitle(title) {
+  let start = true;
+  return title.split(/(\s+)/).map(tok => {
+    if (/^\s+$/.test(tok)) return tok;
+    const m = tok.match(/^([^\p{L}\d]*)([\p{L}\d][\p{L}\d\-/'’]*)(.*)$/u);
+    let out = tok;
+    if (m) {
+      const [, pre, word, post] = m;
+      const isStart = start || /["„(]/.test(pre);
+      if (word.length >= 3 && /^\p{Lu}+$/u.test(word) && !TITLE_KEEP.test(word)) {
+        out = pre + (isStart ? word.charAt(0) + word.slice(1).toLowerCase() : word.toLowerCase()) + post;
+      } else if (!isStart && /^\p{Lu}(\p{Ll}|$)/u.test(word) && !TITLE_KEEP.test(word.split(/[-/]/)[0])) {
+        out = pre + word.charAt(0).toLowerCase() + word.slice(1) + post;
+      }
+    }
+    start = /[?!.]$/.test(tok);
+    return out;
+  }).join('');
+}
+
 /** Escapuje tekst do HTML, nie psując już istniejących encji (&amp;, &quot; itd.). */
 export function escapeHtml(text) {
   return sanitizeText(text)
@@ -288,7 +313,7 @@ ${siteHeader()}
 <div class="container article-layout">
 
   <article class="article">
-    <nav class="breadcrumb" aria-label="Okruszki"><a href="/">Strona główna</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; ${escapeHtml(category)}</nav>
+    <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/">Strona główna</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; ${escapeHtml(category)}</nav>
 
     <div class="article-meta">
       <span class="tag">${escapeHtml(category)}</span>
@@ -404,7 +429,7 @@ ${siteHeader()}
 <main>
 
 <section class="container page-intro">
-  <p class="eyebrow">Blog</p>
+  <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/">Strona główna</a> &rsaquo; Blog</nav>
   <h1 class="section-title">Porady dla kierowców Bolt, Uber i FreeNow</h1>
   <p class="section-lead">Zarobki, wynajem auta, formalności i pierwsze kroki w Białymstoku - wszystko, co warto wiedzieć, zanim zaczniesz jeździć.</p>
 </section>

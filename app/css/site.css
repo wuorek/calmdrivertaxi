@@ -61,6 +61,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-head);
+  line-height: 1.2;
   margin: 0;
 }
 
@@ -375,7 +376,7 @@ textarea {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 32px;
-  align-items: center;
+  align-items: start;
   padding-top: 32px;
 }
 
@@ -753,6 +754,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .price-table .small {
+  display: block;
+  margin-top: 2px;
   color: var(--muted);
   font-size: 14px;
 }
@@ -1113,6 +1116,7 @@ input[type="range"]::-moz-range-thumb {
 /* ---------- Stopka ---------- */
 
 .site-footer {
+  border-top: 1px solid var(--dark-line);
   background: var(--dark);
   color: var(--dark-muted);
   font-size: 15px;
@@ -1226,9 +1230,9 @@ input[type="range"]::-moz-range-thumb {
 .article h1 {
   margin-bottom: 20px;
   font-weight: 900;
-  font-size: clamp(30px, 4vw, 52px);
+  font-size: clamp(30px, 3.6vw, 48px);
   line-height: 1.05;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
 }
 
 .article-lead {
@@ -2017,5 +2021,85 @@ input[type="range"]::-moz-range-thumb {
   .article-aside .aside-block .btn { display: flex; width: 100%; }
 
 /* Lista bloga */
-.page-intro { padding-top: 40px; padding-bottom: 8px; }
   .page-intro .eyebrow { margin-bottom: 10px; }
+
+
+/* ==========================================================
+   Wspólne odstępy i warianty (zamiast stylów wpisanych w HTML)
+   ========================================================== */
+
+/* Odstęp pod nagłówkiem sekcji i pod leadem. :where = zerowa waga,
+   więc komponenty z własnym marginesem go nadpisują. */
+:where(.section-title) + :where(:not(.section-lead)) {
+  margin-top: 24px;
+}
+
+:where(.section-lead) + :where(*) {
+  margin-top: 28px;
+}
+
+:where(.section-lead) + :where(.hero-actions) {
+  margin-top: 24px;
+}
+
+:where(.calc-box) :where(p) + :where(.hero-actions, p) {
+  margin-top: 16px;
+}
+
+:where(.section) > :where(* + .calc-box) {
+  margin-top: 40px;
+}
+
+/* Ostatnia sekcja przed stopką */
+main > .section:last-child {
+  padding-bottom: 64px;
+}
+
+.section-title.is-small {
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+.subhead {
+  margin: 40px 0 12px;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.rent-table .subhead {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.breadcrumb.is-top {
+  margin: 20px 0 0;
+}
+
+.section-dark .eyebrow {
+  margin-bottom: 8px;
+  color: var(--dark-muted);
+}
+
+.section-dark .btn-outline {
+  border-color: var(--dark-text);
+  color: var(--dark-text);
+}
+
+.article .table-note {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Szerokie tabele w artykułach przewijają się w poziomie na telefonie */
+@media (max-width: 720px) {
+  .article-body table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    font-size: 14px;
+  }
+
+  .article-body th,
+  .article-body td {
+    white-space: nowrap;
+  }
+}

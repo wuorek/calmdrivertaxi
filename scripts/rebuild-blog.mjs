@@ -14,7 +14,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { buildArticleHTML, buildBlogIndexHTML, normalizeDashes, sanitizeText } from './article-template.mjs';
+import { buildArticleHTML, buildBlogIndexHTML, normalizeDashes, sanitizeText, sentenceCaseTitle } from './article-template.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.resolve(__dirname, '..');
@@ -194,6 +194,9 @@ export function rebuildBlog({ dryRun = false, root = DEFAULT_ROOT } = {}) {
   for (const article of index.articles) {
     for (const key of ['title', 'excerpt', 'metaDescription']) {
       if (typeof article[key] === 'string') article[key] = sanitizeText(article[key]);
+    }
+    if (typeof article.title === 'string') {
+      article.title = sentenceCaseTitle(article.title);
     }
   }
 

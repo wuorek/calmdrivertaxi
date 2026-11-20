@@ -161,6 +161,7 @@ GŁOS I STYL:
 - Każde zdanie niesie informację — zero wypełniaczy i ogólników
 - Nie używaj: "kompleksowo", "profesjonalnie", "najwyższa jakość", "niezwykle ważny", "od podszewki"
 - ZAKAZ znaków "—" (długi myślnik) i "–" (średni myślnik): używaj wyłącznie zwykłego "-". ZAKAZ emoji i symboli graficznych
+- Tytuł i nagłówki piszesz zdaniowo, jak po polsku: wielka litera tylko na początku i w nazwach własnych (Bolt, Uber, FreeNow, Białystok, CalmDriver). ZAKAZ Title Case ("Ile Naprawdę Zarobisz") i słów pisanych CAŁYMI WIELKIMI LITERAMI.
 - Unikaj powtarzalnej struktury — zaskocz czytelnika ciekawym wstępem, nietypowym ujęciem tematu
 - Dodaj konkretne przykłady, scenariusze, obliczenia, porównania
 
