@@ -161,9 +161,10 @@
     {
       "keyword": "bolt rozliczenie podatku VAT kierowca 2026",
       "priority": 1,
-      "status": "pending",
+      "status": "done",
       "source": "GSC 2026-10-29",
-      "note": "poz. 23,8"
+      "note": "poz. 23,8",
+      "published_date": "2026-11-23"
     },
     {
       "keyword": "praca dorywcza kierowca Bialystok weekendy",

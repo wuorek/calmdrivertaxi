@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://calmdriver.pl/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://calmdriver.pl/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://calmdriver.pl/" />
     <changefreq>monthly</changefreq>
@@ -11,51 +11,51 @@
   </url>
   <url>
     <loc>https://calmdriver.pl/faq/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/blog/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/praca-kierowca-bolt-bialystok/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/praca-kierowca-uber-bialystok/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/praca-kierowca-freenow-bialystok/</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://calmdriver.pl/praca-dla-studenta-bialystok/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/wynajem-auta-pod-taxi-bialystok/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/taxi-bialystok/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://calmdriver.pl/blog/bolt-rozliczenie-podatku-vat-kierowca-2026-co-musisz-wiedziec.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://calmdriver.pl/blog/free-now-zarobki-2026-bialystok-ile-naprawde-zarobisz.html</loc>
@@ -221,6 +221,12 @@
   </url>
   <url>
     <loc>https://calmdriver.pl/blog/bialystok-2026-bolt-czy-uber-co-sie-bardziej-oplaca-dla-kierowcy-anali.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calmdriver.pl/blog/marek-3-miesiace-kierowca-bolt-uber-bialystok-historia-i-zarobki.html</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
