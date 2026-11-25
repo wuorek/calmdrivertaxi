@@ -140,9 +140,10 @@
     {
       "keyword": "ile mozna zarobic na bolcie w weekend",
       "priority": 2,
-      "status": "pending",
+      "status": "done",
       "source": "GSC 2026-09-12",
-      "note": "poz. 53,0 i 55,5 na pokrewnych frazach"
+      "note": "poz. 53,0 i 55,5 na pokrewnych frazach",
+      "published_date": "2026-11-25"
     },
     {
       "keyword": "wymagania auta do bolt uber Bialystok rocznik",
